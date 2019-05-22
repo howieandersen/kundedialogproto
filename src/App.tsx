@@ -9,6 +9,7 @@ import Form6 from "./Components/Form6";
 import Form7 from "./Components/Form7";
 import Pagination from "./Components/Pagination";
 import { number, string } from 'prop-types';
+import './App.css';
 
 export default class App extends React.Component<any, any>{
   constructor(props: any) {
@@ -81,7 +82,7 @@ export default class App extends React.Component<any, any>{
             <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Previous</a>
             <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 45px 0px 45px" }}>Next</a>
           </div>
-          <div style={{display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%", top: "180px"}}>
+          <div className={"pagination"} style={{display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%"}}>
             <div style={{ textAlign: "center", display: "inline-block" }}>
               <Pagination style={{ textAlign: "center", display: "inline-block", position: "sticky"}} getIndex={this.getIndex} setIndex={this.setIndex} />
             </div>
