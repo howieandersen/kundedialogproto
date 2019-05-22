@@ -7,7 +7,7 @@ import Form4 from "./Components/Form4";
 import Form5 from "./Components/Form5";
 import Form6 from "./Components/Form6";
 import Form7 from "./Components/Form7";
-import SelectBox from "./Components/Selectbox";
+import Pagination from "./Components/Pagination";
 import { number, string } from 'prop-types';
 
 export default class App extends React.Component<any, any>{
@@ -20,6 +20,8 @@ export default class App extends React.Component<any, any>{
     this.nextClicked = this.nextClicked.bind(this);
     this.previousClicked = this.previousClicked.bind(this);
     this.getQuestionIndex = this.getQuestionIndex.bind(this);
+    this.getIndex = this.getIndex.bind(this);
+    this.setIndex = this.setIndex.bind(this);
     this.getPhase = this.getPhase.bind(this);
     this.setPhase = this.setPhase.bind(this);
     this.setAnswer = this.setAnswer.bind(this);
@@ -79,6 +81,11 @@ export default class App extends React.Component<any, any>{
             <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Previous</a>
             <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 45px 0px 45px" }}>Next</a>
           </div>
+          <div style={{display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%", top: "180px"}}>
+            <div style={{ textAlign: "center", display: "inline-block" }}>
+              <Pagination style={{ textAlign: "center", display: "inline-block", position: "sticky"}} getIndex={this.getIndex} setIndex={this.setIndex} />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -86,6 +93,14 @@ export default class App extends React.Component<any, any>{
 
   private getQuestionIndex() {
     return this.state.syvKjappeIndex
+  }
+
+  private getIndex() {
+    return this.state.index
+  }
+
+  private setIndex(targetPage: number) {
+    this.setState({index: targetPage})
   }
 
   private getPhase() {
@@ -196,7 +211,7 @@ export default class App extends React.Component<any, any>{
     else if (this.state.syvKjappeIndex == 5 && this.state.phase == 0)
       this.setState({ phaseIdQuestionThree: answer })
     else if (this.state.syvKjappeIndex == 6 && this.state.phase == 0)
-      this.setState({ phaseIdQuestionFour: answer})
+      this.setState({ phaseIdQuestionFour: answer })
 
     else if (this.state.syvKjappeIndex == 5 && this.state.phase == 1)
       this.setState({ prePhaseQuestionOne: answer })

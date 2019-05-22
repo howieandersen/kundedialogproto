@@ -40,6 +40,9 @@ export default class Form1 extends React.Component<any, any>{
         return (
             <div className="container">
                 <form role="form" className="o-form bgWhite">
+                    <br></br>
+                    <div style={{ textAlign: "center", display: "inline-block", margin: "auto" }}>
+                    </div>
                     <div className="o-form__inner">
                         <div className="m-form__group">
                             {this.props.getQuestionIndex() <= 2 && <label className="a-label">Innledende spørsmål</label>}
