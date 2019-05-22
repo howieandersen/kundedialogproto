@@ -11,16 +11,17 @@ export default class Form2 extends React.Component<any, any>{
                     <div className="o-form__inner">
                         <div className="m-form__group">
                             <label className="a-label">Innledende info</label>
-                            
+
                             <span className="a-input__help">
-                            <p>La oss bli bedre kjent med deg</p>
                             </span>
-                            <hr />
-                            <label className="a-label">Tittel</label>
+                            <hr /> <br></br>
+                            <span className="a-input__help">
+                                <p>Tittel</p>
+                            </span>
                             <input type="text" className="a-input" style={{ marginBottom: "20px" }} />
                             <p>Ideen er</p>
                             <textarea className="a-textarea" rows={3}></textarea>
-                            <p style={{fontFamily: "Circular"}}>som skal løse</p>
+                            <p style={{ fontFamily: "Circular" }}>som skal løse</p>
                             <textarea className="a-textarea" rows={3}></textarea>
                             <p>for</p>
                             <textarea className="a-textarea" rows={3}></textarea>

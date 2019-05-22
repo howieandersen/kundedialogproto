@@ -67,7 +67,7 @@ export default class App extends React.Component<any, any>{
     return (
       <div className="App" style={{ paddingBottom: "30px" }}>
         <Header />
-        <div style={{ width: "50%", minWidth: "800px", margin: "auto" }}>
+        <div style={{ width: "40%", minWidth: "800px", margin: "auto" }}>
           {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} getSyvKjappeFerdig={this.getSyvKjappeFerdig} />}
           {this.state.index == 2 && <Form2 />}
           {this.state.index == 3 && <Form3 />}
