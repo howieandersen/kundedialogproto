@@ -59,6 +59,7 @@ export default class Form1 extends React.Component<any, any>{
                                 </span>
                                 <hr />
                                 <div className="App container" style={{ padding: "0px 20% 0px 20%" }}>
+                                    {this.props.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Ferdig</label>}
                                     {this.props.getQuestionIndex() == 1 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.introQuestionOne}</label>}
                                     {this.props.getQuestionIndex() == 2 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.introQuestionTwo}</label>}
 
@@ -85,9 +86,9 @@ export default class Form1 extends React.Component<any, any>{
                                     {this.props.getQuestionIndex() == 10 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionFour}</label>}
                                 </div>
                                 <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
-                                    <a className="a-btn border" onClick={this.props.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px" }}>Nei</a>
+                                    {!this.props.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.props.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px" }}>Nei</a>}
                                     {this.props.getQuestionIndex() > 1 && <a className="a-btn small" onClick={this.props.previousQuestion} style={{ margin: "4px 0px 4px 0px" }}>Tilbake</a>}
-                                    <a className="a-btn border" onClick={this.props.questionAnswerYes} style={{ float: "right", padding: "0px 48px 0px 48px" }}>Ja</a>
+                                    {!this.props.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.props.questionAnswerYes} style={{ float: "right", padding: "0px 48px 0px 48px" }}>Ja</a>}
                                 </div>
                                 <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
                                 </div>

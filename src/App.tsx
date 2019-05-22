@@ -23,10 +23,12 @@ export default class App extends React.Component<any, any>{
     this.getPhase = this.getPhase.bind(this);
     this.setPhase = this.setPhase.bind(this);
     this.setAnswer = this.setAnswer.bind(this);
+    this.getSyvKjappeFerdig = this.getSyvKjappeFerdig.bind(this);
 
     this.state = {
       index: 1,
       syvKjappeIndex: 1,
+      syvKjappeFerdig: false, // This becomes true when there are no questions left for the user to answer
       phase: 0, // 0 = innledende spørsmål & velge fase, 1 = prephase, 2 = early phase, 3 = operational phase, 4 = growth phase
 
       introQuestionOne: false,
@@ -61,7 +63,7 @@ export default class App extends React.Component<any, any>{
       <div className="App" style={{ paddingBottom: "30px" }}>
         <Header />
         <div style={{ width: "70%", margin: "auto" }}>
-          {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} />}
+          {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} getSyvKjappeFerdig={this.getSyvKjappeFerdig} />}
           {this.state.index == 2 && <Form2 />}
           {this.state.index == 3 && <Form3 />}
           {this.state.index == 4 && <Form4 />}
@@ -114,7 +116,7 @@ export default class App extends React.Component<any, any>{
 
   private questionAnswerNo() {
     this.setAnswer(false)
-    
+
     this.setState((prevState: { syvKjappeIndex: number; }) => {
       if (this.state.phase == 0 && prevState.syvKjappeIndex == 4)
         return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 1 }
@@ -138,25 +140,24 @@ export default class App extends React.Component<any, any>{
   // }
 
   private previousQuestion() {
+    this.setAnswer(false)
+
     this.setState((prevState: { syvKjappeIndex: number; }) => {
-      console.log(prevState.syvKjappeIndex);
       if (this.state.phase == 1 && prevState.syvKjappeIndex == 5)
         return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
       else if (this.state.phase == 2 && prevState.syvKjappeIndex == 6)
         return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
       else if (this.state.phase == 3 && prevState.syvKjappeIndex == 7)
         return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
-      else if (this.state.phase == 4 && prevState.syvKjappeIndex == 7) {
+      else if (this.state.phase == 4 && prevState.syvKjappeIndex == 7)
         return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
-      }
       else
-        return { syvKjappeIndex: prevState.syvKjappeIndex - 1 }
+        return { syvKjappeIndex: prevState.syvKjappeIndex - 1, syvKjappeFerdig: false }
     })
   }
 
   private previousClicked() {
     this.setState((prevState: { index: number; }) => {
-      console.log(prevState.index);
       if (prevState.index != 1)
         return { index: prevState.index - 1 }
       else
@@ -166,12 +167,15 @@ export default class App extends React.Component<any, any>{
 
   private nextClicked() {
     this.setState((prevState: { index: number; }) => {
-      console.log(prevState.index);
       if (prevState.index != 7)
         return { index: prevState.index + 1 }
       else
         return { index: prevState.index }
     })
+  }
+
+  private getSyvKjappeFerdig() {
+    return this.state.syvKjappeFerdig
   }
 
   private setAnswer(answer: boolean) {
@@ -187,19 +191,19 @@ export default class App extends React.Component<any, any>{
     else if (this.state.syvKjappeIndex == 5 && this.state.phase == 0)
       this.setState({ phaseIdQuestionThree: answer })
     else if (this.state.syvKjappeIndex == 6 && this.state.phase == 0)
-      this.setState({ phaseIdQuestionFour: answer })
+      this.setState({ phaseIdQuestionFour: answer})
 
     else if (this.state.syvKjappeIndex == 5 && this.state.phase == 1)
       this.setState({ prePhaseQuestionOne: answer })
     else if (this.state.syvKjappeIndex == 6 && this.state.phase == 1)
       this.setState({ prePhaseQuestionTwo: answer })
     else if (this.state.syvKjappeIndex == 7 && this.state.phase == 1)
-      this.setState({ prePhaseQuestionThree: answer })
+      this.setState({ prePhaseQuestionThree: answer, syvKjappeFerdig: true })
 
     else if (this.state.syvKjappeIndex == 6 && this.state.phase == 2)
       this.setState({ earlyPhaseQuestionOne: answer })
     else if (this.state.syvKjappeIndex == 7 && this.state.phase == 2)
-      this.setState({ earlyPhaseQuestionTwo: answer })
+      this.setState({ earlyPhaseQuestionTwo: answer, syvKjappeFerdig: true })
 
     else if (this.state.syvKjappeIndex == 7 && this.state.phase == 3)
       this.setState({ operationalPhaseQuestionOne: answer })
@@ -208,7 +212,7 @@ export default class App extends React.Component<any, any>{
     else if (this.state.syvKjappeIndex == 9 && this.state.phase == 3)
       this.setState({ operationalPhaseQuestionThree: answer })
     else if (this.state.syvKjappeIndex == 10 && this.state.phase == 3)
-      this.setState({ operationalPhaseQuestionFour: answer })
+      this.setState({ operationalPhaseQuestionFour: answer, syvKjappeFerdig: true })
 
     else if (this.state.syvKjappeIndex == 7 && this.state.phase == 4)
       this.setState({ growthPhaseQuestionOne: answer })
@@ -217,6 +221,6 @@ export default class App extends React.Component<any, any>{
     else if (this.state.syvKjappeIndex == 9 && this.state.phase == 4)
       this.setState({ growthPhaseQuestionThree: answer })
     else if (this.state.syvKjappeIndex == 10 && this.state.phase == 4)
-      this.setState({ growthPhaseQuestionFour: answer })
+      this.setState({ growthPhaseQuestionFour: answer, syvKjappeFerdig: true })
   }
 }
