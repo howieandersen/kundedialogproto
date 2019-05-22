@@ -22,11 +22,12 @@ export default class App extends React.Component<any, any>{
     this.getQuestionIndex = this.getQuestionIndex.bind(this);
     this.getPhase = this.getPhase.bind(this);
     this.setPhase = this.setPhase.bind(this);
+    this.setAnswer = this.setAnswer.bind(this);
 
     this.state = {
       index: 1,
       syvKjappeIndex: 1,
-      phase: 0, // 0 = innledende spørsmål, 1 = prephase, 2 = early phase, 3 = operational phase, 4 = growth phase
+      phase: 0, // 0 = innledende spørsmål & velge fase, 1 = prephase, 2 = early phase, 3 = operational phase, 4 = growth phase
 
       introQuestionOne: false,
       introQuestionTwo: false,
@@ -50,7 +51,8 @@ export default class App extends React.Component<any, any>{
 
       growthPhaseQuestionOne: false,
       growthPhaseQuestionTwo: false,
-      growthPhaseQuestionThree: false
+      growthPhaseQuestionThree: false,
+      growthPhaseQuestionFour: false
     };
   }
 
@@ -90,6 +92,8 @@ export default class App extends React.Component<any, any>{
   }
 
   private questionAnswerYes() {
+    this.setAnswer(true)
+
     this.setState((prevState: { syvKjappeIndex: number; }) => {
       if (this.state.phase == 0 && prevState.syvKjappeIndex == 6)
         return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 4 }
@@ -109,6 +113,8 @@ export default class App extends React.Component<any, any>{
   // }
 
   private questionAnswerNo() {
+    this.setAnswer(false)
+    
     this.setState((prevState: { syvKjappeIndex: number; }) => {
       if (this.state.phase == 0 && prevState.syvKjappeIndex == 4)
         return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 1 }
@@ -144,7 +150,7 @@ export default class App extends React.Component<any, any>{
         return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
       }
       else
-        return { syvKjappeIndex: prevState.syvKjappeIndex -1}
+        return { syvKjappeIndex: prevState.syvKjappeIndex - 1 }
     })
   }
 
@@ -166,5 +172,51 @@ export default class App extends React.Component<any, any>{
       else
         return { index: prevState.index }
     })
+  }
+
+  private setAnswer(answer: boolean) {
+    if (this.state.syvKjappeIndex == 1)
+      this.setState({ introQuestionOne: answer })
+    else if (this.state.syvKjappeIndex == 2)
+      this.setState({ introQuestionTwo: answer })
+
+    else if (this.state.syvKjappeIndex == 3)
+      this.setState({ phaseIdQuestionOne: answer })
+    else if (this.state.syvKjappeIndex == 4)
+      this.setState({ phaseIdQuestionTwo: answer })
+    else if (this.state.syvKjappeIndex == 5 && this.state.phase == 0)
+      this.setState({ phaseIdQuestionThree: answer })
+    else if (this.state.syvKjappeIndex == 6 && this.state.phase == 0)
+      this.setState({ phaseIdQuestionFour: answer })
+
+    else if (this.state.syvKjappeIndex == 5 && this.state.phase == 1)
+      this.setState({ prePhaseQuestionOne: answer })
+    else if (this.state.syvKjappeIndex == 6 && this.state.phase == 1)
+      this.setState({ prePhaseQuestionTwo: answer })
+    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 1)
+      this.setState({ prePhaseQuestionThree: answer })
+
+    else if (this.state.syvKjappeIndex == 6 && this.state.phase == 2)
+      this.setState({ earlyPhaseQuestionOne: answer })
+    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 2)
+      this.setState({ earlyPhaseQuestionTwo: answer })
+
+    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 3)
+      this.setState({ operationalPhaseQuestionOne: answer })
+    else if (this.state.syvKjappeIndex == 8 && this.state.phase == 3)
+      this.setState({ operationalPhaseQuestionTwo: answer })
+    else if (this.state.syvKjappeIndex == 9 && this.state.phase == 3)
+      this.setState({ operationalPhaseQuestionThree: answer })
+    else if (this.state.syvKjappeIndex == 10 && this.state.phase == 3)
+      this.setState({ operationalPhaseQuestionFour: answer })
+
+    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 4)
+      this.setState({ growthPhaseQuestionOne: answer })
+    else if (this.state.syvKjappeIndex == 8 && this.state.phase == 4)
+      this.setState({ growthPhaseQuestionTwo: answer })
+    else if (this.state.syvKjappeIndex == 9 && this.state.phase == 4)
+      this.setState({ growthPhaseQuestionThree: answer })
+    else if (this.state.syvKjappeIndex == 10 && this.state.phase == 4)
+      this.setState({ growthPhaseQuestionFour: answer })
   }
 }
