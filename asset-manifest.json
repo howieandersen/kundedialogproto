@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/howieandersen/kundedialogproto/static/css/main.b0948fa4.chunk.css",
+    "main.js": "/howieandersen/kundedialogproto/static/js/main.870f347f.chunk.js",
+    "main.js.map": "/howieandersen/kundedialogproto/static/js/main.870f347f.chunk.js.map",
+    "runtime~main.js": "/howieandersen/kundedialogproto/static/js/runtime~main.5580ef81.js",
+    "runtime~main.js.map": "/howieandersen/kundedialogproto/static/js/runtime~main.5580ef81.js.map",
+    "static/js/2.16effa7c.chunk.js": "/howieandersen/kundedialogproto/static/js/2.16effa7c.chunk.js",
+    "static/js/2.16effa7c.chunk.js.map": "/howieandersen/kundedialogproto/static/js/2.16effa7c.chunk.js.map",
+    "index.html": "/howieandersen/kundedialogproto/index.html",
+    "precache-manifest.e57311aecabebe96decec3355792aa3d.js": "/howieandersen/kundedialogproto/precache-manifest.e57311aecabebe96decec3355792aa3d.js",
+    "service-worker.js": "/howieandersen/kundedialogproto/service-worker.js",
+    "static/css/main.b0948fa4.chunk.css.map": "/howieandersen/kundedialogproto/static/css/main.b0948fa4.chunk.css.map"
+  }
+}
