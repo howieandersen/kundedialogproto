@@ -4,6 +4,10 @@ import '../App.css';
 
 export default class Form2 extends React.Component<any, any>{
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+
     public render() {
         return (
             <div className="container">
