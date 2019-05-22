@@ -73,7 +73,7 @@ export default class Form1 extends React.Component<any, any>{
                                     {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.prePhaseQuestionThree}</label>}
 
                                     {this.props.getQuestionIndex() == 6 && this.props.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.earlyPhaseQuestionOne}</label>}
-                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.earlyPhaseQuestionOne}</label>}
+                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.earlyPhaseQuestionTwo}</label>}
 
                                     {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionOne}</label>}
                                     {this.props.getQuestionIndex() == 8 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionTwo}</label>}
