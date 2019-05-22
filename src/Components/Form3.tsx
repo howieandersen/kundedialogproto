@@ -15,6 +15,7 @@ export default class Form3 extends React.Component<any, any>{
                                 <span className="a-input__help">
                                     <p>Har du dokumenter vi bør se på før møtet? Dette kan være skisser av forretningsmodell, pitch deck, e.l</p>
                                 </span>
+                                <hr></hr>
                             </div>
                         </div>
                         <div className="App">

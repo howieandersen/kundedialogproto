@@ -11,6 +11,7 @@ export default class Form4 extends React.Component<any, any>{
                     <div className="o-form__inner">
                         <div className="m-form__group">
                             <label className="a-label">Har du en rådgiver du vil snakke med?</label>
+                            <hr></hr>
                             <div className="m-form__group">
                                 <div className="wrapper-class">
                                     <fieldset>
@@ -18,17 +19,17 @@ export default class Form4 extends React.Component<any, any>{
                                             <p>Du har tidligere vært i kontakt med:</p>
                                         </span>
                                         <div className="a-option">
-                                            <span className="a-option__text">Ola</span>
+                                            <span className="a-option__text">Anita</span>
                                             <input type="radio" name="rsvp" />
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
-                                            <span className="a-option__text">Per</span>
+                                            <span className="a-option__text">Håkon</span>
                                             <input type="radio" name="rsvp" />
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
-                                            <span className="a-option__text">Jon</span>
+                                            <span className="a-option__text">Hans Martin</span>
                                             <input type="radio" name="rsvp" />
                                             <span className="a-option__background"></span>
                                         </div>
