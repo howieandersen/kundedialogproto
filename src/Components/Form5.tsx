@@ -51,7 +51,7 @@ export default class Form5 extends React.Component<any, any>{
                             <br></br>
                             <div className="wrapper-class">
                                 <span className="a-input__help">
-                                    <p>Foreslag til agenda, varighet, e.l</p>
+                                    <p>Forslag til agenda, varighet, e.l</p>
                                 </span>
                                 <textarea className="a-textarea" rows={3}></textarea>
                             </div>

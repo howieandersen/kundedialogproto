@@ -26,7 +26,17 @@ export default class App extends React.Component<any, any>{
     this.getPhase = this.getPhase.bind(this);
     this.setPhase = this.setPhase.bind(this);
     this.setAnswer = this.setAnswer.bind(this);
-    this.setTitle = this.setTitle.bind(this);
+    this.settitle = this.settitle.bind(this);
+
+
+    this.settitle = this.settitle.bind(this);
+    this.setideenEr = this.setideenEr.bind(this);
+    this.setsomSkalLose = this.setsomSkalLose.bind(this);
+    this.setfor = this.setfor.bind(this);
+    this.setambisjon = this.setambisjon.bind(this);
+    this.setbehov = this.setbehov.bind(this);
+    this.setteam = this.setteam.bind(this);
+
     this.getSyvKjappeFerdig = this.getSyvKjappeFerdig.bind(this);
 
     this.state = {
@@ -76,7 +86,7 @@ export default class App extends React.Component<any, any>{
         <Header />
         <div style={{ width: "40%", minWidth: "800px", margin: "auto" }}>
           {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} getSyvKjappeFerdig={this.getSyvKjappeFerdig} />}
-          {this.state.index == 2 && <Form2 setTitle={this.setTitle} title={this.state.title}/>}
+          {this.state.index == 2 && <Form2 settitle={this.settitle} title={this.state.title} setideenEr={this.setideenEr} ideenEr={this.state.ideenEr} setsomSkalLose={this.setsomSkalLose} somSkalLose={this.state.somSkalLose}/>}
           {this.state.index == 3 && <Form3 />}
           {this.state.index == 4 && <Form4 />}
           {this.state.index == 5 && <Form5 />}
@@ -152,8 +162,32 @@ export default class App extends React.Component<any, any>{
   // behov: string,
   // team: string,
 
-  private setTitle(newTitle: string) {
+  private settitle(newTitle: string) {
     this.setState({title: newTitle})
+  }
+
+  private setideenEr(newIde: string) {
+    this.setState({ideenEr: newIde})
+  }
+
+  private setsomSkalLose(newIde: string) {
+    this.setState({somSkalLose: newIde})
+  }
+
+  private setfor(newIde: string) {
+    this.setState({for: newIde})
+  }
+
+  private setambisjon(newIde: string) {
+    this.setState({ambisjon: newIde})
+  }
+
+  private setbehov(newIde: string) {
+    this.setState({behov: newIde})
+  }
+
+  private setteam(newIde: string) {
+    this.setState({team: newIde})
   }
 
   private previousQuestion() {

@@ -86,9 +86,9 @@ export default class Form1 extends React.Component<any, any>{
                                     {this.props.getQuestionIndex() == 10 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionFour}</label>}
                                 </div>
                                 <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
-                                    {!this.props.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.props.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px" }}>Nei</a>}
-                                    {this.props.getQuestionIndex() > 1 && <a className="a-btn small" onClick={this.props.previousQuestion} style={{ margin: "4px 0px 4px 0px" }}>Tilbake</a>}
-                                    {!this.props.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.props.questionAnswerYes} style={{ float: "right", padding: "0px 48px 0px 48px" }}>Ja</a>}
+                                    {!this.props.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.props.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px", border: "outset" }}>Nei</a>}
+                                    {this.props.getQuestionIndex() > 1 && <a className="a-btn small" onClick={this.props.previousQuestion} style={{ margin: "5px 0px 5px 0px" }}>Tilbake</a>}
+                                    {!this.props.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.props.questionAnswerYes} style={{ float: "right", padding: "0px 48px 0px 48px", border: "outset" }}>Ja</a>}
                                 </div>
                                 <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
                                 </div>
