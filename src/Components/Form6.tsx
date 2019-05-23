@@ -59,17 +59,17 @@ export default class Form6 extends React.Component<any, any>{
                                             </span>
                                             <div className="a-option">
                                                 <span className="a-option__text">Fysisk møte</span>
-                                                <input type="radio" name="rsvp" />
+                                                <input type="radio" name="rsvps" />
                                                 <span className="a-option__background"></span>
                                             </div>
                                             <div className="a-option">
                                                 <span className="a-option__text">Videomøte</span>
-                                                <input type="radio" name="rsvp" />
+                                                <input type="radio" name="rsvps" />
                                                 <span className="a-option__background"></span>
                                             </div>
                                             <div className="a-option">
                                                 <span className="a-option__text">Telefonmøte</span>
-                                                <input type="radio" name="rsvp" />
+                                                <input type="radio" name="rsvps" />
                                                 <span className="a-option__background"></span>
                                             </div>
                                         </fieldset>
