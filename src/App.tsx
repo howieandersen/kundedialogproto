@@ -26,6 +26,7 @@ export default class App extends React.Component<any, any>{
     this.getPhase = this.getPhase.bind(this);
     this.setPhase = this.setPhase.bind(this);
     this.setAnswer = this.setAnswer.bind(this);
+    this.setTitle = this.setTitle.bind(this);
     this.getSyvKjappeFerdig = this.getSyvKjappeFerdig.bind(this);
 
     this.state = {
@@ -62,7 +63,10 @@ export default class App extends React.Component<any, any>{
       title: string,
       ideenEr: string,
       somSkalLose: string,
-      for: string
+      for: string,
+      ambisjon: string,
+      behov: string,
+      team: string,
     };
   }
 
@@ -72,7 +76,7 @@ export default class App extends React.Component<any, any>{
         <Header />
         <div style={{ width: "40%", minWidth: "800px", margin: "auto" }}>
           {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} getSyvKjappeFerdig={this.getSyvKjappeFerdig} />}
-          {this.state.index == 2 && <Form2 />}
+          {this.state.index == 2 && <Form2 setTitle={this.setTitle} title={this.state.title}/>}
           {this.state.index == 3 && <Form3 />}
           {this.state.index == 4 && <Form4 />}
           {this.state.index == 5 && <Form5 />}
@@ -125,16 +129,6 @@ export default class App extends React.Component<any, any>{
     })
   }
 
-  // private questionAnswerYes() {
-  //   this.setState((prevState: { syvKjappeIndex: number; }) => {
-  //     console.log(prevState.syvKjappeIndex);
-  //     if (prevState.syvKjappeIndex != 7)
-  //       return { syvKjappeIndex: prevState.syvKjappeIndex + 1 }
-  //     else
-  //       return { syvKjappeIndex: prevState.syvKjappeIndex }
-  //   })
-  // }
-
   private questionAnswerNo() {
     this.setAnswer(false)
 
@@ -150,15 +144,17 @@ export default class App extends React.Component<any, any>{
     })
   }
 
-  // private questionAnswerNo() {
-  //   this.setState((prevState: { syvKjappeIndex: number; }) => {
-  //     console.log(prevState.syvKjappeIndex);
-  //     if (prevState.syvKjappeIndex != 7)
-  //       return { syvKjappeIndex: prevState.syvKjappeIndex + 1 }
-  //     else
-  //       return { syvKjappeIndex: prevState.syvKjappeIndex }
-  //   })
-  // }
+  // title: string,
+  // ideenEr: string,
+  // somSkalLose: string,
+  // for: string,
+  // ambisjon: string,
+  // behov: string,
+  // team: string,
+
+  private setTitle(newTitle: string) {
+    this.setState({title: newTitle})
+  }
 
   private previousQuestion() {
     this.setAnswer(false)

@@ -6,7 +6,7 @@ export default class Form2 extends React.Component<any, any>{
 
     componentDidMount() {
         window.scrollTo(0, 0)
-      }
+    }
 
     public render() {
         return (
@@ -20,7 +20,7 @@ export default class Form2 extends React.Component<any, any>{
                             <span className="a-input__help">
                                 <label className="a-label">Tittel på prosjekt</label>
                             </span>
-                            <input type="text" className="a-input" style={{ marginBottom: "20px" }} />
+                            <input type="text" value={this.props.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
                             <div style={{ padding: "10px", border: "solid", borderColor: "#D9D9D6" }}>
                                 <span className="a-input__help">
                                     <label className="a-label">Elevator Pitch</label>
@@ -32,8 +32,6 @@ export default class Form2 extends React.Component<any, any>{
                                 <p>for</p>
                                 <textarea className="a-textarea" rows={2}></textarea>
                             </div>
-                            <br></br>
-                            <hr></hr>
                             <br></br>
                             <div className="m-form__group">
                                 <span className="a-input__help">
@@ -56,5 +54,9 @@ export default class Form2 extends React.Component<any, any>{
                 </form>
             </div>
         );
+    }
+
+    private handleTitleChange(event: { target: { value: any; }; }) {
+        this.props.setTitle(event.target.value)
     }
 }
