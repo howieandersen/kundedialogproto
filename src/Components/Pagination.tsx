@@ -48,8 +48,4 @@ export default class Pagination extends React.Component<any, any>{
   private handleClick(targetPage: number) {
     this.props.setIndex(targetPage)
   }
-
-  private userClick(targetPage: number) {
-    this.props.setIndex(targetPage)
-  }
 }

@@ -26,11 +26,11 @@ export default class Form2 extends React.Component<any, any>{
                                     <label className="a-label">Elevator Pitch</label>
                                 </span>
                                 <p>Ideen er</p>
-                                <textarea className="a-textarea" rows={3}></textarea>
+                                <textarea className="a-textarea" rows={2}></textarea>
                                 <p style={{ fontFamily: "Circular" }}>som skal løse</p>
-                                <textarea className="a-textarea" rows={3}></textarea>
+                                <textarea className="a-textarea" rows={2}></textarea>
                                 <p>for</p>
-                                <textarea className="a-textarea" rows={3}></textarea>
+                                <textarea className="a-textarea" rows={2}></textarea>
                             </div>
                             <br></br>
                             <hr></hr>
