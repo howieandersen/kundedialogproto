@@ -14,7 +14,7 @@ export default class Form2 extends React.Component<any, any>{
 
                             <hr /> <br></br>
                             <span className="a-input__help">
-                                <label className="a-label">Tittel på prosjekt</label>
+                                <label className="a-label">Tittel</label>
                             </span>
                             <input type="text" value={this.props.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
                             <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>

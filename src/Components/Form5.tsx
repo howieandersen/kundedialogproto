@@ -40,7 +40,7 @@ export default class Form5 extends React.Component<any, any>{
                                                 <span className="a-option__background"></span>
                                             </div>
                                             <div className="a-option">
-                                                <span className="a-option__text">Finansieringsplan</span>
+                                                <span className="a-option__text">Finansiering</span>
                                                 <input type="radio" name="rsvp" />
                                                 <span className="a-option__background"></span>
                                             </div>
