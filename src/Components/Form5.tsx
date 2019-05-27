@@ -17,13 +17,8 @@ export default class Form5 extends React.Component<any, any>{
                                     <div className="wrapper-class">
                                         <fieldset>
                                             <span className="a-input__help">
-                                                <p>Hva er ønsket resultat for møtet?</p>
+                                                <p>Hva vil du diskutere med oss?</p>
                                             </span>
-                                            <div className="a-option">
-                                                <span className="a-option__text">Finansiering</span>
-                                                <input type="radio" name="rsvp" />
-                                                <span className="a-option__background"></span>
-                                            </div>
                                             <div className="a-option">
                                                 <span className="a-option__text">Kompetanse</span>
                                                 <input type="radio" name="rsvp" />
@@ -41,6 +36,11 @@ export default class Form5 extends React.Component<any, any>{
                                             </div>
                                             <div className="a-option">
                                                 <span className="a-option__text">Annet</span>
+                                                <input type="radio" name="rsvp" />
+                                                <span className="a-option__background"></span>
+                                            </div>
+                                            <div className="a-option">
+                                                <span className="a-option__text">Finansieringsplan</span>
                                                 <input type="radio" name="rsvp" />
                                                 <span className="a-option__background"></span>
                                             </div>

@@ -10,7 +10,7 @@ export default class Form6 extends React.Component<any, any>{
                 <form role="form" className="o-form bgWhite">
                     <div className="o-form__inner">
                         <div className="m-form__group">
-                            <label className="a-label">Foretrukket fremdrift og møteform</label>
+                            <label className="a-label">Foretrukket tidsrom og møteform</label>
                             <hr></hr>
                             <div className="wrapper-class">
                                 <span className="a-input__help">

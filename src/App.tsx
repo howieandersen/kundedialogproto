@@ -103,8 +103,8 @@ export default class App extends React.Component<any, any>{
           {this.state.index == 6 && <Form6 />}
           {this.state.index == 7 && <Form7 />}
           <div className="App container">
-            <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Previous</a>
-            <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 45px 0px 45px" }}>Next</a>
+            <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Forrige</a>
+            <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 35px 0px 35px" }}>Neste</a>
           </div>
           <div className={"pagination"} style={{display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%"}}>
             <div style={{ textAlign: "center", display: "inline-block" }}>

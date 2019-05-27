@@ -1,8 +1,16 @@
 import * as React from 'react';
 import '../style.css'
 import '../App.css';
+import { placeholder } from '@babel/types';
 
 export default class Form4 extends React.Component<any, any>{
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+          title: 'Navn på ønsket rådgiver'
+        };
+    }
 
     public render() {
         return (
@@ -10,7 +18,7 @@ export default class Form4 extends React.Component<any, any>{
                 <form role="form" className="o-form bgWhite">
                     <div className="o-form__inner">
                         <div className="m-form__group">
-                            <label className="a-label">Hvilken kompetanse bør din rådgiver besitte?</label>
+                            <label className="a-label">Velg din rådgiver</label>
                             <hr></hr>
                             <div className="m-form__group">
                                 <div className="wrapper-class">
@@ -39,23 +47,40 @@ export default class Form4 extends React.Component<any, any>{
                                         <span className="a-input__help">
                                             <p><br></br>Andre:</p>
                                         </span>
-                                        <input type="text" className="a-input"  value={this.props.adviser} onChange={this.changeAdviser.bind(this)}/>
+                                        <input type="text" className="a-input" value={this.props.adviser} onChange={this.changeAdviser.bind(this)} placeholder={this.state.title} style={{marginBottom: "20px"}} />
+                                        <div className="a-option">
+                                            <span className="a-option__text" >La oss velge en rådgiver til deg</span>
+                                            {this.props.adviser == "Anita" && <input type="radio" value="Anita" onChange={this.changeAdviser.bind(this)} checked={true} name="rsvp" />}
+                                            {this.props.adviser != "Anita" && <input type="radio" value="Anita" onChange={this.changeAdviser.bind(this)} name="rsvp" />}
+                                            <span className="a-option__background"></span>
+                                        </div>
                                     </fieldset>
                                 </div>
                             </div>
                             <div className="wrapper-class">
                                 <span className="a-input__help">
-                                    <label className="a-label">Hva er viktig for deg å diskutere med oss?</label>
+                                    <label className="a-label">Hvilke kompetanser bør din rådgiver besitte?</label>
                                 </span>
                                 <fieldset>
                                     <div className="a-option">
-                                        <span className="a-option__text">Oppstart og skalering</span>
-                                        {this.props.topicOne && <input type="radio" onChange={this.changeTopicOne.bind(this)} name="rsvp" />}
-                                        {!this.props.topicOne && <input type="radio" onChange={this.changeTopicOne.bind(this)} name="rsvp" />}
+                                        <span className="a-option__text">Oppstart</span>
+                                        {this.props.topicOne && <input type="checkbox" onChange={this.changeTopicOne.bind(this)} name="rsvp_checkmark" />}
+                                        {!this.props.topicOne && <input type="checkbox" onChange={this.changeTopicOne.bind(this)} name="rsvp_checkmark" />}
                                         <span className="a-option__background"></span>
                                     </div>
                                     <div className="a-option">
-                                        <span className="a-option__text">Innovasjon og utvikling av bedrift</span>
+                                        <span className="a-option__text">Skalering</span>
+                                        {this.props.topicOne && <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} name="rsvp_checkmark" />}
+                                        {!this.props.topicOne && <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} name="rsvp_checkmark" />}
+                                        <span className="a-option__background"></span>
+                                    </div>
+                                    <div className="a-option">
+                                        <span className="a-option__text">Innovasjon</span>
+                                        <input type="checkbox" name="rsvp_checkmark" />
+                                        <span className="a-option__background"></span>
+                                    </div>
+                                    <div className="a-option">
+                                        <span className="a-option__text">Utvikling av bedrift</span>
                                         <input type="checkbox" name="rsvp_checkmark" />
                                         <span className="a-option__background"></span>
                                     </div>
@@ -65,7 +90,7 @@ export default class Form4 extends React.Component<any, any>{
                                         <span className="a-option__background"></span>
                                     </div>
                                     <div className="a-option">
-                                        <span className="a-option__text">Investering i landbruket</span>
+                                        <span className="a-option__text">Investering i landbruk</span>
                                         <input type="checkbox" name="rsvp_checkmark" />
                                         <span className="a-option__background"></span>
                                     </div>

@@ -18,11 +18,11 @@ export default class Form2 extends React.Component<any, any>{
                             </span>
                             <input type="text" value={this.props.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
                             <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>
-                                <p>Ideen er</p>
+                                <p>Ideen er (hvilken løsning)</p>
                                 <textarea className="a-textarea" rows={2} value={this.props.ideenEr} onChange={this.handleideenErChange.bind(this)}></textarea>
-                                <p style={{ fontFamily: "Circular" }}>som skal løse</p>
+                                <p style={{ fontFamily: "Circular" }}>som skal løse (hvilket problem)</p>
                                 <textarea className="a-textarea" rows={2} value={this.props.somSkalLose} onChange={this.handlesomSkalLoseChange.bind(this)}></textarea>
-                                <p>for</p>
+                                <p>for (hvem)</p>
                                 <textarea className="a-textarea" rows={2} value={this.props.for} onChange={this.handleforChange.bind(this)}></textarea>
                             </div>
                         </div>
