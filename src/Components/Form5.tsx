@@ -17,7 +17,7 @@ export default class Form5 extends React.Component<any, any>{
                                     <div className="wrapper-class">
                                         <fieldset>
                                             <span className="a-input__help">
-                                                <p>Førsteprioritet</p>
+                                                <p>Hva er ønsket resultat for møtet?</p>
                                             </span>
                                             <div className="a-option">
                                                 <span className="a-option__text">Finansiering</span>
@@ -47,13 +47,6 @@ export default class Form5 extends React.Component<any, any>{
                                         </fieldset>
                                     </div>
                                 </div>
-                            </div>
-                            <br></br>
-                            <div className="wrapper-class">
-                                <span className="a-input__help">
-                                    <p>Forslag til agenda, varighet, e.l</p>
-                                </span>
-                                <textarea className="a-textarea" rows={3}></textarea>
                             </div>
                         </div>
                     </div>

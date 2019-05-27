@@ -10,7 +10,7 @@ export default class Form6 extends React.Component<any, any>{
                 <form role="form" className="o-form bgWhite">
                     <div className="o-form__inner">
                         <div className="m-form__group">
-                            <label className="a-label">Velge tid og møterom</label>
+                            <label className="a-label">Foretrukket fremdrift og møteform</label>
                             <hr></hr>
                             <div className="wrapper-class">
                                 <span className="a-input__help">
@@ -41,7 +41,7 @@ export default class Form6 extends React.Component<any, any>{
                                                 <span className="a-option__background"></span>
                                             </div>
                                             <div className="a-option">
-                                                <span className="a-option__text">Innen 8 uker</span>
+                                                <span className="a-option__text">Innen 8 år</span>
                                                 <input type="radio" name="rsvp" />
                                                 <span className="a-option__background"></span>
                                             </div>

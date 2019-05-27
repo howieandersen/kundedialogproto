@@ -21,6 +21,7 @@ export default class App extends React.Component<any, any>{
     this.nextClicked = this.nextClicked.bind(this);
     this.previousClicked = this.previousClicked.bind(this);
     this.getQuestionIndex = this.getQuestionIndex.bind(this);
+    this.getSyvKjappeFerdig = this.getSyvKjappeFerdig.bind(this);
     this.getIndex = this.getIndex.bind(this);
     this.setIndex = this.setIndex.bind(this);
     this.getPhase = this.getPhase.bind(this);
@@ -33,11 +34,15 @@ export default class App extends React.Component<any, any>{
     this.setideenEr = this.setideenEr.bind(this);
     this.setsomSkalLose = this.setsomSkalLose.bind(this);
     this.setfor = this.setfor.bind(this);
-    this.setambisjon = this.setambisjon.bind(this);
-    this.setbehov = this.setbehov.bind(this);
-    this.setteam = this.setteam.bind(this);
 
-    this.getSyvKjappeFerdig = this.getSyvKjappeFerdig.bind(this);
+    this.setAdviser = this.setAdviser.bind(this);
+    this.setTopicOne = this.setTopicOne.bind(this);
+    this.setTopicTwo = this.setTopicTwo.bind(this);
+    this.setTopicThree = this.setTopicThree.bind(this);
+    this.setTopicFour = this.setTopicFour.bind(this);
+    this.setTopicFive = this.setTopicFive.bind(this);
+    this.setTopicSix = this.setTopicSix.bind(this);
+
 
     this.state = {
       index: 1,
@@ -74,9 +79,14 @@ export default class App extends React.Component<any, any>{
       ideenEr: string,
       somSkalLose: string,
       for: string,
-      ambisjon: string,
-      behov: string,
-      team: string,
+
+      adviser: string,
+      topicOne: false,
+      topicTwo: false,
+      topicThree: false,
+      topicFour: false,
+      topicFive: false,
+      topicSix: false,
     };
   }
 
@@ -86,9 +96,9 @@ export default class App extends React.Component<any, any>{
         <Header />
         <div style={{ width: "40%", minWidth: "800px", margin: "auto" }}>
           {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} getSyvKjappeFerdig={this.getSyvKjappeFerdig} />}
-          {this.state.index == 2 && <Form2 settitle={this.settitle} title={this.state.title} setideenEr={this.setideenEr} ideenEr={this.state.ideenEr} setsomSkalLose={this.setsomSkalLose} somSkalLose={this.state.somSkalLose}/>}
+          {this.state.index == 2 && <Form2 settitle={this.settitle} title={this.state.title} setideenEr={this.setideenEr} ideenEr={this.state.ideenEr} setsomSkalLose={this.setsomSkalLose} somSkalLose={this.state.somSkalLose} setfor={this.setfor} for={this.state.for}/>}
           {this.state.index == 3 && <Form3 />}
-          {this.state.index == 4 && <Form4 />}
+          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser} setTopicOne={this.setTopicOne} topicOne={this.state.topicOne} setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo} setTopicThree={this.setTopicThree} topicThree={this.state.topicThree} setTopicFour={this.setTopicFour} topicFour={this.state.topicFour} setTopicFive={this.setTopicFive} topicFive={this.state.topicFive} setTopicSix={this.setTopicSix} topicSix={this.state.topicSix}/> }
           {this.state.index == 5 && <Form5 />}
           {this.state.index == 6 && <Form6 />}
           {this.state.index == 7 && <Form7 />}
@@ -106,8 +116,25 @@ export default class App extends React.Component<any, any>{
     );
   }
 
-  private getQuestionIndex() {
-    return this.state.syvKjappeIndex
+
+  //Main App functions
+
+  private previousClicked() {
+    this.setState((prevState: { index: number; }) => {
+      if (prevState.index != 1)
+        return { index: prevState.index - 1 }
+      else
+        return { index: prevState.index }
+    })
+  }
+
+  private nextClicked() {
+    this.setState((prevState: { index: number; }) => {
+      if (prevState.index != 7)
+        return { index: prevState.index + 1 }
+      else
+        return { index: prevState.index }
+    })
   }
 
   private getIndex() {
@@ -116,6 +143,16 @@ export default class App extends React.Component<any, any>{
 
   private setIndex(targetPage: number) {
     this.setState({index: targetPage})
+  }
+
+  //Play with syv kjappe spørsmål
+  
+  private getQuestionIndex() {
+    return this.state.syvKjappeIndex
+  }
+
+  private getSyvKjappeFerdig() {
+    return this.state.syvKjappeFerdig
   }
 
   private getPhase() {
@@ -154,42 +191,6 @@ export default class App extends React.Component<any, any>{
     })
   }
 
-  // title: string,
-  // ideenEr: string,
-  // somSkalLose: string,
-  // for: string,
-  // ambisjon: string,
-  // behov: string,
-  // team: string,
-
-  private settitle(newTitle: string) {
-    this.setState({title: newTitle})
-  }
-
-  private setideenEr(newIde: string) {
-    this.setState({ideenEr: newIde})
-  }
-
-  private setsomSkalLose(newIde: string) {
-    this.setState({somSkalLose: newIde})
-  }
-
-  private setfor(newIde: string) {
-    this.setState({for: newIde})
-  }
-
-  private setambisjon(newIde: string) {
-    this.setState({ambisjon: newIde})
-  }
-
-  private setbehov(newIde: string) {
-    this.setState({behov: newIde})
-  }
-
-  private setteam(newIde: string) {
-    this.setState({team: newIde})
-  }
-
   private previousQuestion() {
     this.setAnswer(false)
 
@@ -205,28 +206,6 @@ export default class App extends React.Component<any, any>{
       else
         return { syvKjappeIndex: prevState.syvKjappeIndex - 1, syvKjappeFerdig: false }
     })
-  }
-
-  private previousClicked() {
-    this.setState((prevState: { index: number; }) => {
-      if (prevState.index != 1)
-        return { index: prevState.index - 1 }
-      else
-        return { index: prevState.index }
-    })
-  }
-
-  private nextClicked() {
-    this.setState((prevState: { index: number; }) => {
-      if (prevState.index != 7)
-        return { index: prevState.index + 1 }
-      else
-        return { index: prevState.index }
-    })
-  }
-
-  private getSyvKjappeFerdig() {
-    return this.state.syvKjappeFerdig
   }
 
   private setAnswer(answer: boolean) {
@@ -273,5 +252,53 @@ export default class App extends React.Component<any, any>{
       this.setState({ growthPhaseQuestionThree: answer })
     else if (this.state.syvKjappeIndex == 10 && this.state.phase == 4)
       this.setState({ growthPhaseQuestionFour: answer, syvKjappeFerdig: true })
+  }
+
+  //Set variables for Form2
+
+  private settitle(newTitle: string) {
+    this.setState({title: newTitle})
+  }
+
+  private setideenEr(newIde: string) {
+    this.setState({ideenEr: newIde})
+  }
+
+  private setsomSkalLose(newIde: string) {
+    this.setState({somSkalLose: newIde})
+  }
+
+  private setfor(newIde: string) {
+    this.setState({for: newIde})
+  }
+
+  // Set variables for Form4
+
+  private setAdviser(newTitle: boolean) {
+    this.setState({adviser: newTitle})
+  }
+
+  private setTopicOne(newTitle: boolean) {
+    this.setState({topicOne: newTitle})
+  }
+
+  private setTopicTwo(newTitle: boolean) {
+    this.setState({topicTwo: newTitle})
+  }
+
+  private setTopicThree(newTitle: boolean) {
+    this.setState({topicThree: newTitle})
+  }
+
+  private setTopicFour(newTitle: boolean) {
+    this.setState({topicFour: newTitle})
+  }
+
+  private setTopicFive(newTitle: boolean) {
+    this.setState({topicFive: newTitle})
+  }
+
+  private setTopicSix(newTitle: boolean) {
+    this.setState({topicSix: newTitle})
   }
 }

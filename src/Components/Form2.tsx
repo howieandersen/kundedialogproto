@@ -4,17 +4,13 @@ import '../App.css';
 
 export default class Form2 extends React.Component<any, any>{
 
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
-
     public render() {
         return (
             <div className="container">
                 <form role="form" className="o-form bgWhite">
                     <div className="o-form__inner">
                         <div className="m-form__group">
-                            <label className="a-label">Innledende info</label>
+                            <label className="a-label">Fortell oss om prosjektet ditt</label>
 
                             <hr /> <br></br>
                             <span className="a-input__help">
@@ -22,32 +18,12 @@ export default class Form2 extends React.Component<any, any>{
                             </span>
                             <input type="text" value={this.props.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
                             <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>
-                                <span className="a-input__help">
-                                    <label className="a-label">Elevator Pitch</label>
-                                </span>
                                 <p>Ideen er</p>
                                 <textarea className="a-textarea" rows={2} value={this.props.ideenEr} onChange={this.handleideenErChange.bind(this)}></textarea>
                                 <p style={{ fontFamily: "Circular" }}>som skal løse</p>
                                 <textarea className="a-textarea" rows={2} value={this.props.somSkalLose} onChange={this.handlesomSkalLoseChange.bind(this)}></textarea>
                                 <p>for</p>
-                                <textarea className="a-textarea" rows={2}></textarea>
-                            </div>
-                            <br></br>
-                            <div className="m-form__group">
-                                <span className="a-input__help">
-                                    <label className="a-label">Mål/ambisjon</label>
-                                </span>
-                                <textarea className="a-textarea" rows={3}></textarea>
-                                <br></br>
-                                <span className="a-input__help">
-                                    <label className="a-label">Behov/problem som skal løses</label>
-                                </span>
-                                <textarea className="a-textarea" rows={3}></textarea>
-                                <br></br>
-                                <span className="a-input__help">
-                                    <label className="a-label">Ditt team</label>
-                                </span>
-                                <textarea className="a-textarea" rows={3}></textarea>
+                                <textarea className="a-textarea" rows={2} value={this.props.for} onChange={this.handleforChange.bind(this)}></textarea>
                             </div>
                         </div>
                     </div>
@@ -66,5 +42,9 @@ export default class Form2 extends React.Component<any, any>{
 
     private handlesomSkalLoseChange(event: { target: { value: any; }; }) {
         this.props.setsomSkalLose(event.target.value)
+    }
+
+    private handleforChange(event: { target: { value: any; }; }) {
+        this.props.setfor(event.target.value)
     }
 }

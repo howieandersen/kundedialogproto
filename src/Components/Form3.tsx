@@ -10,7 +10,7 @@ export default class Form3 extends React.Component<any, any>{
                 <form role="form" className="o-form bgWhite">
                     <div className="o-form__inner">
                         <div className="m-form__group">
-                            <label className="a-label">Kritiske dokumenter</label>
+                            <label className="a-label">Nyttige dokumenter om prosjektet ditt</label>
                             <div className="wrapper-class">
                                 <span className="a-input__help">
                                     <p>Har du dokumenter vi bør se på før møtet? Dette kan være skisser av forretningsmodell, pitch deck, e.l</p>
