@@ -13,8 +13,13 @@ export default class Form4 extends React.Component<any, any>{
 
         this.state = {
             title: 'Navn på ønsket rådgiver',
-            localAdviserName: string
+            localAdviserName: this.props.adviser
         };
+    }
+
+    componentDidMount() {
+        if (this.props.adviser == "Anita" || this.props.adviser == "Håkon" ||this.props.adviser == "Hans Martin" ||this.props.adviser == "IN")
+            this.setState({localAdviserName: ""})
     }
 
     public render() {
@@ -73,44 +78,38 @@ export default class Form4 extends React.Component<any, any>{
                                     <fieldset>
                                         <div className="a-option">
                                             <span className="a-option__text">Oppstart</span>
-                                            {this.props.topicOne && <input type="checkbox" onChange={this.changeTopicOne.bind(this)} name="rsvp_checkmark" />}
-                                            {!this.props.topicOne && <input type="checkbox" onChange={this.changeTopicOne.bind(this)} name="rsvp_checkmark" />}
+                                            <input type="checkbox" onChange={this.changeTopicOne.bind(this)} name="rsvp_checkmark" />
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Skalering</span>
-                                            {this.props.topicOne && <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} name="rsvp_checkmark" />}
-                                            {!this.props.topicOne && <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} name="rsvp_checkmark" />}
-                                            <span className="a-option__background"></span>
-                                        </div>
-                                        <div className="a-option">
-                                            <span className="a-option__text">Innovasjon</span>
-                                            <input type="checkbox" name="rsvp_checkmark" />
+                                            <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} name="rsvp_checkmark" />
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Utvikling av bedrift</span>
-                                            <input type="checkbox" name="rsvp_checkmark" />
+                                            <input type="checkbox" onChange={this.changeTopicThree.bind(this)} name="rsvp_checkmark" />
                                             <span className="a-option__background"></span>
                                         </div>
+                                        
                                         <div className="a-option">
                                             <span className="a-option__text">Nå internasjonale markeder</span>
-                                            <input type="checkbox" name="rsvp_checkmark" />
+                                            <input type="checkbox" onChange={this.changeTopicFour.bind(this)} name="rsvp_checkmark" />
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Investering i landbruk</span>
-                                            <input type="checkbox" name="rsvp_checkmark" />
+                                            <input type="checkbox" onChange={this.changeTopicFive.bind(this)} name="rsvp_checkmark" />
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Beskyttelse av din ide</span>
-                                            <input type="checkbox" name="rsvp_checkmark" />
+                                            <input type="checkbox" onChange={this.changeTopicSix.bind(this)} name="rsvp_checkmark" />
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Finansiering</span>
-                                            <input type="checkbox" name="rsvp_checkmark" />
+                                            <input type="checkbox" onChange={this.changeTopicSeven.bind(this)} name="rsvp_checkmark" />
                                             <span className="a-option__background"></span>
                                         </div>
                                     </fieldset>
@@ -149,6 +148,10 @@ export default class Form4 extends React.Component<any, any>{
 
     private changeTopicSix() {
         this.props.setTopicSix()
+    }
+
+    private changeTopicSeven() {
+        this.props.setTopicSeven()
     }
 
     private setLocalAdviserName(event: { target: { value: any; }; }) {

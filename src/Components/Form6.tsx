@@ -41,7 +41,7 @@ export default class Form6 extends React.Component<any, any>{
                                                 <span className="a-option__background"></span>
                                             </div>
                                             <div className="a-option">
-                                                <span className="a-option__text">Innen 8 år</span>
+                                                <span className="a-option__text">Innen 8 uker</span>
                                                 <input type="radio" name="rsvp" />
                                                 <span className="a-option__background"></span>
                                             </div>

@@ -42,6 +42,8 @@ export default class App extends React.Component<any, any>{
     this.setTopicFour = this.setTopicFour.bind(this);
     this.setTopicFive = this.setTopicFive.bind(this);
     this.setTopicSix = this.setTopicSix.bind(this);
+    this.setTopicSeven = this.setTopicSeven.bind(this);
+
 
 
     this.state = {
@@ -87,6 +89,13 @@ export default class App extends React.Component<any, any>{
       topicFour: false,
       topicFive: false,
       topicSix: false,
+      topicSeven: false,
+
+      diskuterekompetanse: false,
+      diskutereadvice: false,
+      diskuterenettverk: false,
+      finansiering: false,
+      diskutereannet: false,
     };
   }
 
@@ -96,9 +105,9 @@ export default class App extends React.Component<any, any>{
         <Header />
         <div style={{ width: "40%", minWidth: "800px", margin: "auto" }}>
           {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} getSyvKjappeFerdig={this.getSyvKjappeFerdig} />}
-          {this.state.index == 2 && <Form2 settitle={this.settitle} title={this.state.title} setideenEr={this.setideenEr} ideenEr={this.state.ideenEr} setsomSkalLose={this.setsomSkalLose} somSkalLose={this.state.somSkalLose} setfor={this.setfor} for={this.state.for}/>}
+          {this.state.index == 2 && <Form2 settitle={this.settitle} title={this.state.title} setideenEr={this.setideenEr} ideenEr={this.state.ideenEr} setsomSkalLose={this.setsomSkalLose} somSkalLose={this.state.somSkalLose} setfor={this.setfor} for={this.state.for} />}
           {this.state.index == 3 && <Form3 />}
-          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser} setTopicOne={this.setTopicOne} topicOne={this.state.topicOne} setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo} setTopicThree={this.setTopicThree} topicThree={this.state.topicThree} setTopicFour={this.setTopicFour} topicFour={this.state.topicFour} setTopicFive={this.setTopicFive} topicFive={this.state.topicFive} setTopicSix={this.setTopicSix} topicSix={this.state.topicSix}/> }
+          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser} setTopicOne={this.setTopicOne} topicOne={this.state.topicOne} setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo} setTopicThree={this.setTopicThree} topicThree={this.state.topicThree} setTopicFour={this.setTopicFour} topicFour={this.state.topicFour} setTopicFive={this.setTopicFive} topicFive={this.state.topicFive} setTopicSix={this.setTopicSix} topicSix={this.state.topicSix} setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
           {this.state.index == 5 && <Form5 />}
           {this.state.index == 6 && <Form6 />}
           {this.state.index == 7 && <Form7 />}
@@ -106,9 +115,9 @@ export default class App extends React.Component<any, any>{
             <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Forrige</a>
             <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 35px 0px 35px" }}>Neste</a>
           </div>
-          <div className={"pagination"} style={{display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%"}}>
+          <div className={"pagination"} style={{ display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%" }}>
             <div style={{ textAlign: "center", display: "inline-block" }}>
-              <Pagination style={{ textAlign: "center", display: "inline-block", position: "sticky"}} getIndex={this.getIndex} setIndex={this.setIndex} />
+              <Pagination style={{ textAlign: "center", display: "inline-block", position: "sticky" }} getIndex={this.getIndex} setIndex={this.setIndex} />
             </div>
           </div>
         </div>
@@ -142,11 +151,11 @@ export default class App extends React.Component<any, any>{
   }
 
   private setIndex(targetPage: number) {
-    this.setState({index: targetPage})
+    this.setState({ index: targetPage })
   }
 
   //Play with syv kjappe spørsmål
-  
+
   private getQuestionIndex() {
     return this.state.syvKjappeIndex
   }
@@ -257,48 +266,76 @@ export default class App extends React.Component<any, any>{
   //Set variables for Form2
 
   private settitle(newTitle: string) {
-    this.setState({title: newTitle})
+    this.setState({ title: newTitle })
   }
 
   private setideenEr(newIde: string) {
-    this.setState({ideenEr: newIde})
+    this.setState({ ideenEr: newIde })
   }
 
   private setsomSkalLose(newIde: string) {
-    this.setState({somSkalLose: newIde})
+    this.setState({ somSkalLose: newIde })
   }
 
   private setfor(newIde: string) {
-    this.setState({for: newIde})
+    this.setState({ for: newIde })
   }
 
   // Set variables for Form4
 
   private setAdviser(newTitle: boolean) {
-    this.setState({adviser: newTitle})
+    this.setState({ adviser: newTitle })
   }
 
-  private setTopicOne(newTitle: boolean) {
-    this.setState({topicOne: newTitle})
+  private setTopicOne() {
+    if (this.state.topicOne)
+      this.setState({ topicOne: false })
+    else
+      this.setState({ topicOne: true })
   }
 
-  private setTopicTwo(newTitle: boolean) {
-    this.setState({topicTwo: newTitle})
+  private setTopicTwo() {
+    if (this.state.topicTwo)
+      this.setState({ topicTwo: false })
+    else
+      this.setState({ topicTwo: true })
   }
 
-  private setTopicThree(newTitle: boolean) {
-    this.setState({topicThree: newTitle})
+  private setTopicThree() {
+    if (this.state.topicThree)
+      this.setState({ topicThree: false })
+    else
+      this.setState({ topicThree: true })
   }
 
-  private setTopicFour(newTitle: boolean) {
-    this.setState({topicFour: newTitle})
+  private setTopicFour() {
+    if (this.state.topicFour)
+      this.setState({ topicFour: false })
+    else
+      this.setState({ topicFour: true })
   }
 
-  private setTopicFive(newTitle: boolean) {
-    this.setState({topicFive: newTitle})
+  private setTopicFive() {
+    if (this.state.topicFive)
+      this.setState({ topicFive: false })
+    else
+      this.setState({ topicFive: true })
   }
 
-  private setTopicSix(newTitle: boolean) {
-    this.setState({topicSix: newTitle})
+  private setTopicSix() {
+    if (this.state.topicSix)
+      this.setState({ topicSix: false })
+    else
+      this.setState({ topicSix: true })
   }
+
+  private setTopicSeven() {
+    if (this.state.topicSeven)
+      this.setState({ topicSeven: false })
+    else
+      this.setState({ topicSeven: true })
+  }
+
+  // Set variables for Form5
+
 }
