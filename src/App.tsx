@@ -132,6 +132,7 @@ export default class App extends React.Component<any, any>{
 
       // Form5
       annet: false,
+      diskuter: "",
       diskuterekompetanse: false,
       diskutereadvice: false,
       diskuterenettverk: false,
@@ -140,8 +141,8 @@ export default class App extends React.Component<any, any>{
 
 
       // Form6
-      when: string,
-      how: string,
+      when: "",
+      how: "",
     };
   }
 
@@ -281,26 +282,26 @@ export default class App extends React.Component<any, any>{
                             </span>
                             <div className="a-option">
                               <span className="a-option__text">Kompetanse</span>
-                              {this.state.diskuterkompetanse && <input type="radio" onChange={this.setdiskuterekompetanse.bind(this)} checked={true} name="rsvp" />}
-                              {!this.state.diskuterkompetanse && <input type="radio" onChange={this.setdiskuterekompetanse.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Råd</span>
-                              {this.state.diskuteradvice && <input type="radio" onChange={this.setdiskutereadvice.bind(this)} checked={true} name="rsvp" />}
-                              {!this.state.diskuteradvice && <input type="radio" onChange={this.setdiskutereadvice.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "advice" && <input type="radio" value="advice" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "advice" && <input type="radio" value="advice" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Nettverk</span>
-                              {this.state.disktuternettverk && <input type="radio" onChange={this.setdiskuterenettverk.bind(this)} checked={true} name="rsvp" />}
-                              {!this.state.disktuternettverk && <input type="radio" onChange={this.setdiskuterenettverk.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "nettverk" && <input type="radio" value="nettverk" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "nettverk" && <input type="radio" value="nettverk" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Finansiering</span>
-                              {this.state.diskuterfinansiering && <input type="radio" onChange={this.setdiskuterfinansiering.bind(this)} checked={true} name="rsvp" />}
-                              {!this.state.diskuterfinansiering && <input type="radio" onChange={this.setdiskuterfinansiering.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "finansiering" && <input type="radio" value="finansiering" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "finansiering" && <input type="radio" value="finansiering" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
@@ -340,22 +341,26 @@ export default class App extends React.Component<any, any>{
                             </span>
                             <div className="a-option">
                               <span className="a-option__text">Så fort som mulig</span>
-                              <input type="radio" name="rsvp" />
+                              {this.state.when != "så fort som mulig" && <input type="radio" value="så fort som mulig" onChange={this.setwhen.bind(this)} name="rsvp" />}
+                              {this.state.when == "så fort som mulig" && <input type="radio" value="så fort som mulig" onChange={this.setwhen.bind(this)} checked={true} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Innen 2 uker</span>
-                              <input type="radio" name="rsvp" />
+                              {this.state.when != "innen 2 uker" && <input type="radio" value="innen 2 uker" onChange={this.setwhen.bind(this)} name="rsvp" />}
+                              {this.state.when == "innen 2 uker" && <input type="radio" value="innen 2 uker" onChange={this.setwhen.bind(this)} checked={true} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Innen 4 uker</span>
-                              <input type="radio" name="rsvp" />
+                              {this.state.when != "innen 4 uker" && <input type="radio" value="innen 4 uker" onChange={this.setwhen.bind(this)} name="rsvp" />}
+                              {this.state.when == "innen 4 uker" && <input type="radio" value="innen 4 uker" onChange={this.setwhen.bind(this)} checked={true} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Innen 8 uker</span>
-                              <input type="radio" name="rsvp" />
+                              {this.state.when != "innen 8 uker" && <input type="radio" value="innen 8 uker" onChange={this.setwhen.bind(this)} name="rsvp" />}
+                              {this.state.when == "innen 8 uker" && <input type="radio" value="innen 8 uker" onChange={this.setwhen.bind(this)} checked={true} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                           </fieldset>
@@ -372,17 +377,20 @@ export default class App extends React.Component<any, any>{
                             </span>
                             <div className="a-option">
                               <span className="a-option__text">Fysisk møte</span>
-                              <input type="radio" name="rsvps" />
+                              {this.state.how != "fysisk møte" && <input type="radio" value="fysisk møte" onChange={this.sethow.bind(this)} name="rsvps" />}
+                              {this.state.how == "fysisk møte" && <input type="radio" value="fysisk møte" onChange={this.sethow.bind(this)} checked={true} name="rsvps" />} 
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Videomøte</span>
-                              <input type="radio" name="rsvps" />
+                              {this.state.how != "videomøte" && <input type="radio" value="videomøte" onChange={this.sethow.bind(this)} name="rsvps" />}
+                              {this.state.how == "videomøte" && <input type="radio" value="videomøte" onChange={this.sethow.bind(this)} checked={true} name="rsvps" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Telefonmøte</span>
-                              <input type="radio" name="rsvps" />
+                              {this.state.how != "telefonmøte" && <input type="radio" value="telefonmøte" onChange={this.sethow.bind(this)} name="rsvps" />}
+                              {this.state.how == "telefonmøte" && <input type="radio" value="telefonmøte" onChange={this.sethow.bind(this)} checked={true} name="rsvps" />}
                               <span className="a-option__background"></span>
                             </div>
                           </fieldset>
@@ -625,34 +633,6 @@ export default class App extends React.Component<any, any>{
     this.setAdviser(event.target.value)
   }
 
-  private changeTopicOne() {
-    this.setTopicOne()
-  }
-
-  private changeTopicTwo() {
-    this.setTopicTwo()
-  }
-
-  private changeTopicThree() {
-    this.setTopicThree()
-  }
-
-  private changeTopicFour() {
-    this.setTopicFour()
-  }
-
-  private changeTopicFive() {
-    this.setTopicFive()
-  }
-
-  private changeTopicSix() {
-    this.setTopicSix()
-  }
-
-  private changeTopicSeven() {
-    this.setTopicSeven()
-  }
-
   private setLocalAdviserName(event: { target: { value: any; }; }) {
     this.setState({ localAdviserName: event.target.value })
     this.setAdviser(event.target.value)
@@ -730,6 +710,12 @@ export default class App extends React.Component<any, any>{
     })
   }
 
+  private setdiskuter(event: { target: { value: any; }; }) {
+    this.setState({
+      diskuter: event.target.value,
+    })
+  }
+
   private setdiskuterekompetanse() {
     this.setState({
       annet: false,
@@ -781,10 +767,23 @@ export default class App extends React.Component<any, any>{
       diskuterenettverk: false,
       diskuterefinansiering: false,
       diskuterannet: event.target.value,
+      diskuter: event.target.value,
     })
   }
 
   // Set variables for Form6
+
+  private setwhen(event: { target: { value: any; }; }) {
+    this.setState({
+      when: event.target.value,
+    })
+  }
+
+  private sethow(event: { target: { value: any; }; }) {
+    this.setState({
+      how: event.target.value,
+    })
+  }
 
   // Set variables for Form7
 
