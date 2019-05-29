@@ -49,12 +49,15 @@ export default class App extends React.Component<any, any>{
 
     this.setAnnetFalse = this.setAnnetFalse.bind(this);
     this.setAnnetTrue = this.setAnnetTrue.bind(this);
-
-
+    this.setdiskuterekompetanse = this.setdiskuterekompetanse.bind(this);
+    this.setdiskutereadvice = this.setdiskutereadvice.bind(this);
+    this.setdiskuterenettverk = this.setdiskuterenettverk.bind(this);
+    this.setdiskuterfinansiering = this.setdiskuterfinansiering.bind(this);
+    this.setdiskuterannet = this.setdiskuterannet.bind(this);
 
     this.state = {
-      index: 1,
-      syvKjappeIndex: 1,
+      index: 1, //This indicates which Form (which step) component the user is currently looking at
+      syvKjappeIndex: 1, // This indicates which question the user is currently viewing in Form1 (Innledende spørsmål)
       syvKjappeFerdig: false, // This becomes true when there are no questions left for the user to answer
       phase: 0, // 0 = innledende spørsmål & velge fase, 1 = prephase, 2 = early phase, 3 = operational phase, 4 = growth phase
 
@@ -124,20 +127,19 @@ export default class App extends React.Component<any, any>{
       topicFive: false,
       topicSix: false,
       topicSeven: false,
-
-      // Form5
       localTitle: 'Navn på ønsket rådgiver',
       localAdviserName: this.props.adviser,
+
+      // Form5
+      annet: false,
       diskuterekompetanse: false,
       diskutereadvice: false,
       diskuterenettverk: false,
       finansiering: false,
-      diskutereannet: false,
+      diskuterannet: "",
+
 
       // Form6
-      annet: false,
-
-      // Form7
       when: string,
       how: string,
     };
@@ -253,16 +255,16 @@ export default class App extends React.Component<any, any>{
             </div>}
 
           {/* Keep Form4 in seperate component file as we are required to use its componentDidMount() function to correctly display values */}
-          
-          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser} 
-                                           setTopicOne={this.setTopicOne} topicOne={this.state.topicOne} 
-                                           setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo} 
-                                           setTopicThree={this.setTopicThree} topicThree={this.state.topicThree} 
-                                           setTopicFour={this.setTopicFour} topicFour={this.state.topicFour} 
-                                           setTopicFive={this.setTopicFive} topicFive={this.state.topicFive} 
-                                           setTopicSix={this.setTopicSix} topicSix={this.state.topicSix} 
-                                           setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
-                                           
+
+          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser}
+            setTopicOne={this.setTopicOne} topicOne={this.state.topicOne}
+            setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo}
+            setTopicThree={this.setTopicThree} topicThree={this.state.topicThree}
+            setTopicFour={this.setTopicFour} topicFour={this.state.topicFour}
+            setTopicFive={this.setTopicFive} topicFive={this.state.topicFive}
+            setTopicSix={this.setTopicSix} topicSix={this.state.topicSix}
+            setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
+
           {this.state.index == 5 && // FORM5 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
@@ -279,30 +281,35 @@ export default class App extends React.Component<any, any>{
                             </span>
                             <div className="a-option">
                               <span className="a-option__text">Kompetanse</span>
-                              <input type="radio" value="1" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              {this.state.diskuterkompetanse && <input type="radio" onChange={this.setdiskuterekompetanse.bind(this)} checked={true} name="rsvp" />}
+                              {!this.state.diskuterkompetanse && <input type="radio" onChange={this.setdiskuterekompetanse.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Råd</span>
-                              <input type="radio" value="2" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              {this.state.diskuteradvice && <input type="radio" onChange={this.setdiskutereadvice.bind(this)} checked={true} name="rsvp" />}
+                              {!this.state.diskuteradvice && <input type="radio" onChange={this.setdiskutereadvice.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Nettverk</span>
-                              <input type="radio" value="3" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              {this.state.disktuternettverk && <input type="radio" onChange={this.setdiskuterenettverk.bind(this)} checked={true} name="rsvp" />}
+                              {!this.state.disktuternettverk && <input type="radio" onChange={this.setdiskuterenettverk.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Finansiering</span>
-                              <input type="radio" value="4" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              {this.state.diskuterfinansiering && <input type="radio" onChange={this.setdiskuterfinansiering.bind(this)} checked={true} name="rsvp" />}
+                              {!this.state.diskuterfinansiering && <input type="radio" onChange={this.setdiskuterfinansiering.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Annet</span>
-                              <input type="radio" value="5" onChange={this.setAnnetTrue.bind(this)} name="rsvp" />
+                              {this.state.annet && <input type="radio" onChange={this.setAnnetTrue.bind(this)} checked={true} name="rsvp" />}
+                              {!this.state.annet && <input type="radio" onChange={this.setAnnetTrue.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
-                            {this.state.annet && <input type="text" className="a-input" placeholder={"beskriv plz"} style={{ marginTop: "20px", maxWidth: "297.6px" }} />}
+                            {this.state.annet && <input type="text" onChange={this.setdiskuterannet.bind(this)} className="a-input" value={this.state.diskuterannet} placeholder={"beskriv"} style={{ marginTop: "20px", maxWidth: "297.6px" }} />}
                           </fieldset>
                         </div>
                       </div>
@@ -707,16 +714,78 @@ export default class App extends React.Component<any, any>{
   // Set variables for Form5
 
   private setAnnetFalse(event: { target: { value: any; }; }) {
-    this.setState({ annet: false })
+    this.setState({
+      annet: false,
+    })
   }
 
   private setAnnetTrue() {
-    this.setState({ annet: true })
+    this.setState({
+      annet: true,
+      diskuterekompetanse: false,
+      diskutereadvice: false,
+      diskuterenettverk: false,
+      diskuterefinansiering: false,
+      diskuterannet: "",
+    })
+  }
+
+  private setdiskuterekompetanse() {
+    this.setState({
+      annet: false,
+      diskuterekompetanse: true,
+      diskutereadvice: false,
+      diskuterenettverk: false,
+      diskuterefinansiering: false,
+      diskuterannet: "",
+    })
+  }
+
+  private setdiskutereadvice() {
+    this.setState({
+      annet: false,
+      diskuterekompetanse: false,
+      diskutereadvice: true,
+      diskuterenettverk: false,
+      diskuterefinansiering: false,
+      diskuterannet: "",
+    })
+  }
+
+  private setdiskuterenettverk() {
+    this.setState({
+      annet: false,
+      diskuterekompetanse: false,
+      diskutereadvice: false,
+      diskuterenettverk: true,
+      diskuterefinansiering: false,
+      diskuterannet: "",
+    })
+  }
+
+  private setdiskuterfinansiering() {
+    this.setState({
+      annet: false,
+      diskuterekompetanse: false,
+      diskutereadvice: false,
+      diskuterenettverk: false,
+      diskuterefinansiering: true,
+      diskuterannet: "",
+    })
+  }
+
+  private setdiskuterannet(event: { target: { value: any; }; }) {
+    this.setState({
+      diskuterekompetanse: false,
+      diskutereadvice: false,
+      diskuterenettverk: false,
+      diskuterefinansiering: false,
+      diskuterannet: event.target.value,
+    })
   }
 
   // Set variables for Form6
 
   // Set variables for Form7
-
 
 }
