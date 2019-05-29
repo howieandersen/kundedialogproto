@@ -35,6 +35,9 @@ export default class App extends React.Component<any, any>{
     this.setsomSkalLose = this.setsomSkalLose.bind(this);
     this.setfor = this.setfor.bind(this);
 
+
+    this.componentForm4DidMount = this.componentForm4DidMount.bind(this)
+    this.setLocalAdviserName = this.setLocalAdviserName.bind(this)
     this.setAdviser = this.setAdviser.bind(this);
     this.setTopicOne = this.setTopicOne.bind(this);
     this.setTopicTwo = this.setTopicTwo.bind(this);
@@ -44,6 +47,9 @@ export default class App extends React.Component<any, any>{
     this.setTopicSix = this.setTopicSix.bind(this);
     this.setTopicSeven = this.setTopicSeven.bind(this);
 
+    this.setAnnetFalse = this.setAnnetFalse.bind(this);
+    this.setAnnetTrue = this.setAnnetTrue.bind(this);
+
 
 
     this.state = {
@@ -51,6 +57,32 @@ export default class App extends React.Component<any, any>{
       syvKjappeIndex: 1,
       syvKjappeFerdig: false, // This becomes true when there are no questions left for the user to answer
       phase: 0, // 0 = innledende spørsmål & velge fase, 1 = prephase, 2 = early phase, 3 = operational phase, 4 = growth phase
+
+      // Form1
+      QintroQuestionOneQ: "Gjelder dette en eller flere av disse næringene? (Jordbruk, Skogbruk, Reinsdrift)",
+      QintroQuestionTwoQ: "Ønsker du å utvikle et reisemål i Norge (opplevelse, mat, losji, e.l.?)",
+
+      QphaseIdQuestionOneQ: "Har du gjort ferdig en grundig beskrivelse av prosjektet ditt for å få til et nytt produkt, en ny tjeneste, eller en ny måte å gjøre ting på?",
+      QphaseIdQuestionTwoQ: "Har du på funnet ut om prosjektet ditt er teknisk mulig OG har interesserte kjøpere i markedet?",
+      QphaseIdQuestionThreeQ: "Er du så godt i gang med kundeprosjektet at du selger godt i ditt valgte marked?",
+      QphaseIdQuestionFourQ: "Ser du etter muligheter til å utvide i helt nye markeder?",
+
+      QprePhaseQuestionOneQ: "Har du fått bekreftet behov for ideen din blant minst fem mulige kunder?",
+      QprePhaseQuestionTwoQ: "Har du satt opp en organisasjon som kan ta prosjektet ditt videre de neste seks månedene?",
+      QprePhaseQuestionThreeQ: "Sliter du med å finansiere det første trinnet i ideen din?",
+
+      QearlyPhaseQuestionOneQ: "Har du penger til å finansiere de neste nødvendige tiltakene for prosjektet?",
+      QearlyPhaseQuestionTwoQ: "Vil du ha nytte av å samarbeide med andre som har de samme utfordringene som deg?",
+
+      QoperationalPhaseQuestionOneQ: "Ønsker du å bygge kompetanse i avgjørende områder?",
+      QoperationalPhaseQuestionTwoQ: "Har du ambisjoner om å gå inn i et nytt marked?",
+      QoperationalPhaseQuestionThreeQ: "Vil du ha nytte av å samarbeide med andre som har de samme utfordringene som deg?",
+      QoperationalPhaseQuestionFourQ: "Leter du etter en partner for samarbeid på et bestemt område?",
+
+      QgrowthPhaseQuestionOneQ: "Ønsker du å bygge kompetanse i avgjørende områder?",
+      QgrowthPhaseQuestionTwoQ: "Ser du gode muligheter for å vokse deg større i markeder du allerede er i?",
+      QgrowthPhaseQuestionThreeQ: "Vil du vokse fortere hvis merkevaren din er bedre kjent i markedet du tar sikte på?",
+      QgrowthPhaseQuestionFourQ: "Ønsker du å tiltrekke deg turister?",
 
       introQuestionOne: false,
       introQuestionTwo: false,
@@ -77,11 +109,13 @@ export default class App extends React.Component<any, any>{
       growthPhaseQuestionThree: false,
       growthPhaseQuestionFour: false,
 
+      // Form2
       title: string,
       ideenEr: string,
       somSkalLose: string,
       for: string,
 
+      // Form4
       adviser: string,
       topicOne: false,
       topicTwo: false,
@@ -91,11 +125,21 @@ export default class App extends React.Component<any, any>{
       topicSix: false,
       topicSeven: false,
 
+      // Form5
+      localTitle: 'Navn på ønsket rådgiver',
+      localAdviserName: this.props.adviser,
       diskuterekompetanse: false,
       diskutereadvice: false,
       diskuterenettverk: false,
       finansiering: false,
       diskutereannet: false,
+
+      // Form6
+      annet: false,
+
+      // Form7
+      when: string,
+      how: string,
     };
   }
 
@@ -104,13 +148,271 @@ export default class App extends React.Component<any, any>{
       <div className="App" style={{ paddingBottom: "30px" }}>
         <Header />
         <div style={{ width: "40%", minWidth: "800px", margin: "auto" }}>
-          {this.state.index == 1 && <Form1 previousQuestion={this.previousQuestion} questionAnswerYes={this.questionAnswerYes} questionAnswerNo={this.questionAnswerNo} getQuestionIndex={this.getQuestionIndex} getPhase={this.getPhase} setPhase={this.setPhase} getSyvKjappeFerdig={this.getSyvKjappeFerdig} />}
-          {this.state.index == 2 && <Form2 settitle={this.settitle} title={this.state.title} setideenEr={this.setideenEr} ideenEr={this.state.ideenEr} setsomSkalLose={this.setsomSkalLose} somSkalLose={this.state.somSkalLose} setfor={this.setfor} for={this.state.for} />}
-          {this.state.index == 3 && <Form3 />}
-          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser} setTopicOne={this.setTopicOne} topicOne={this.state.topicOne} setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo} setTopicThree={this.setTopicThree} topicThree={this.state.topicThree} setTopicFour={this.setTopicFour} topicFour={this.state.topicFour} setTopicFive={this.setTopicFive} topicFive={this.state.topicFive} setTopicSix={this.setTopicSix} topicSix={this.state.topicSix} setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
-          {this.state.index == 5 && <Form5 />}
-          {this.state.index == 6 && <Form6 />}
-          {this.state.index == 7 && <Form7 />}
+          {this.state.index == 1 && // FORM 1 BEGINS HERE
+            <div className="container">
+              <form role="form" className="o-form bgWhite">
+                <div className="o-form__inner">
+                  <div className="m-form__group">
+                    {this.getQuestionIndex() <= 2 && <label className="a-label">Innledende spørsmål</label>}
+                    {this.getQuestionIndex() >= 3 && this.getPhase() == 0 && <label className="a-label">Identifisere fase</label>}
+                    {this.getQuestionIndex() >= 5 && this.getPhase() == 1 && <label className="a-label">Identifisere problemer for prefase</label>}
+                    {this.getQuestionIndex() >= 6 && this.getPhase() == 2 && <label className="a-label">Identifisere problemer for tidlig fase</label>}
+                    {this.getQuestionIndex() >= 7 && this.getPhase() == 3 && <label className="a-label">Identifisere problemer for operasjonell fase</label>}
+                    {this.getQuestionIndex() >= 7 && this.getPhase() == 4 && <label className="a-label">Identifisere problemer for vekstfase</label>}
+                    <div className="wrapper-class">
+                      <span className="a-input__help">
+                        {this.getQuestionIndex() <= 2 && <p>Innovasjon Norge leverer mer enn bare tilskudd og lån. Vi har mange kunderådgivere som kan hjelpe deg og din bedrift med ulike kompetansetjenester. Svar på spørsmålene under for å finne ut hvordan vi kan hjelpe deg på mest mulig måte.</p>}
+                        {this.getQuestionIndex() > 2 && this.getPhase() == 0 && <p>Her identifiserer vi fase</p>}
+                        {this.getQuestionIndex() >= 5 && this.getPhase() == 1 && <p>Her identifiserer vi problemer for prefase</p>}
+                        {this.getQuestionIndex() >= 6 && this.getPhase() == 2 && <p>Her identifiserer vi problemer for tidlig fase</p>}
+                        {this.getQuestionIndex() >= 7 && this.getPhase() == 3 && <p>Her identifiserer vi problemer for operasjonell fase</p>}
+                        {this.getQuestionIndex() >= 7 && this.getPhase() == 4 && <p>Her identifiserer vi problemer for vekstfase</p>}
+                      </span>
+                      <hr />
+                      <div className="App container" style={{ padding: "0px 20% 0px 20%" }}>
+                        {this.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Ferdig</label>}
+                        {this.getQuestionIndex() == 1 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QintroQuestionOneQ}</label>}
+                        {this.getQuestionIndex() == 2 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QintroQuestionTwoQ}</label>}
+
+                        {this.getQuestionIndex() == 3 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionOneQ}</label>}
+                        {this.getQuestionIndex() == 4 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionTwoQ}</label>}
+                        {this.getQuestionIndex() == 5 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionThreeQ}</label>}
+                        {this.getQuestionIndex() == 6 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionFour}</label>}
+
+                        {this.getQuestionIndex() == 5 && this.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QprePhaseQuestionOneQ}</label>}
+                        {this.getQuestionIndex() == 6 && this.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QprePhaseQuestionTwoQ}</label>}
+                        {this.getQuestionIndex() == 7 && this.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QprePhaseQuestionThreeQ}</label>}
+
+                        {this.getQuestionIndex() == 6 && this.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QearlyPhaseQuestionOneQ}</label>}
+                        {this.getQuestionIndex() == 7 && this.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QearlyPhaseQuestionTwoQ}</label>}
+
+                        {this.getQuestionIndex() == 7 && this.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QoperationalPhaseQuestionOneQ}</label>}
+                        {this.getQuestionIndex() == 8 && this.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QoperationalPhaseQuestionTwoQ}</label>}
+                        {this.getQuestionIndex() == 9 && this.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QoperationalPhaseQuestionThreeQ}</label>}
+                        {this.getQuestionIndex() == 10 && this.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QoperationalPhaseQuestionFourQ}</label>}
+
+                        {this.getQuestionIndex() == 7 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionOneQ}</label>}
+                        {this.getQuestionIndex() == 8 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionTwoQ}</label>}
+                        {this.getQuestionIndex() == 9 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionThreeQ}</label>}
+                        {this.getQuestionIndex() == 10 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionFourQ}</label>}
+                      </div>
+                      <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
+                        {!this.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px", border: "outset" }}>Nei</a>}
+                        {this.getQuestionIndex() > 1 && <a className="a-btn small" onClick={this.previousQuestion} style={{ margin: "5px 0px 5px 0px" }}>Tilbake</a>}
+                        {!this.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.questionAnswerYes} style={{ float: "right", padding: "0px 48px 0px 48px", border: "outset" }}>Ja</a>}
+                      </div>
+                      <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>}
+          {this.state.index == 2 && // FORM 2 BEGINS HERE
+            <div className="container">
+              <form role="form" className="o-form bgWhite">
+                <div className="o-form__inner">
+                  <div className="m-form__group">
+                    <label className="a-label">Fortell oss om prosjektet ditt</label>
+
+                    <hr /> <br></br>
+                    <span className="a-input__help">
+                      <label className="a-label">Tittel</label>
+                    </span>
+                    <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
+                    <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>
+                      <p>Ideen er (hvilken løsning)</p>
+                      <textarea className="a-textarea" rows={2} value={this.state.ideenEr} onChange={this.handleideenErChange.bind(this)}></textarea>
+                      <p style={{ fontFamily: "Circular" }}>som skal løse (hvilket problem)</p>
+                      <textarea className="a-textarea" rows={2} value={this.state.somSkalLose} onChange={this.handlesomSkalLoseChange.bind(this)}></textarea>
+                      <p>for (hvem)</p>
+                      <textarea className="a-textarea" rows={2} value={this.state.for} onChange={this.handleforChange.bind(this)}></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>}
+          {this.state.index == 3 && // FORM3 BEGINS HERE
+            <div className="container">
+              <form role="form" className="o-form bgWhite">
+                <div className="o-form__inner">
+                  <div className="m-form__group">
+                    <label className="a-label">Nyttige dokumenter om prosjektet ditt</label>
+                    <div className="wrapper-class">
+                      <span className="a-input__help">
+                        <p>Har du dokumenter vi bør se på før møtet? Dette kan være skisser av forretningsmodell, pitch deck, eller lignende.</p>
+                      </span>
+                      <hr></hr>
+                    </div>
+                  </div>
+                  <div className="App">
+                    <img src="https://i.imgur.com/ZFiTuhn.png" style={{ display: "block", margin: "auto", width: "80%", border: "outset" }}></img>
+                  </div>
+                </div>
+              </form>
+            </div>}
+
+          {/* Keep Form4 in seperate component file as we are required to use its componentDidMount() function to correctly display values */}
+          
+          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser} 
+                                           setTopicOne={this.setTopicOne} topicOne={this.state.topicOne} 
+                                           setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo} 
+                                           setTopicThree={this.setTopicThree} topicThree={this.state.topicThree} 
+                                           setTopicFour={this.setTopicFour} topicFour={this.state.topicFour} 
+                                           setTopicFive={this.setTopicFive} topicFive={this.state.topicFive} 
+                                           setTopicSix={this.setTopicSix} topicSix={this.state.topicSix} 
+                                           setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
+                                           
+          {this.state.index == 5 && // FORM5 BEGINS HERE
+            <div className="container">
+              <form role="form" className="o-form bgWhite">
+                <div className="o-form__inner">
+                  <div className="m-form__group">
+                    <label className="a-label">Mål for møtet</label>
+                    <hr></hr>
+                    <div className="wrapper-class">
+                      <div className="m-form__group">
+                        <div className="wrapper-class">
+                          <fieldset>
+                            <span className="a-input__help">
+                              <p>Hva vil du diskutere med oss?</p>
+                            </span>
+                            <div className="a-option">
+                              <span className="a-option__text">Kompetanse</span>
+                              <input type="radio" value="1" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Råd</span>
+                              <input type="radio" value="2" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Nettverk</span>
+                              <input type="radio" value="3" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Finansiering</span>
+                              <input type="radio" value="4" onChange={this.setAnnetFalse.bind(this)} name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Annet</span>
+                              <input type="radio" value="5" onChange={this.setAnnetTrue.bind(this)} name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            {this.state.annet && <input type="text" className="a-input" placeholder={"beskriv plz"} style={{ marginTop: "20px", maxWidth: "297.6px" }} />}
+                          </fieldset>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>}
+          {this.state.index == 6 && // FORM6 BEGINS HERE
+            <div className="container">
+              <form role="form" className="o-form bgWhite">
+                <div className="o-form__inner">
+                  <div className="m-form__group">
+                    <label className="a-label">Foretrukket tidsrom og møteform</label>
+                    <hr></hr>
+                    <div className="wrapper-class">
+                      <span className="a-input__help">
+                        <p></p>
+                      </span>
+                    </div>
+
+                    <div className="wrapper-class">
+                      <div className="m-form__group">
+                        <div className="wrapper-class">
+                          <fieldset>
+                            <span className="a-input__help">
+                              <p>Når ønsker du at møtet skal skje?</p>
+                            </span>
+                            <div className="a-option">
+                              <span className="a-option__text">Så fort som mulig</span>
+                              <input type="radio" name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Innen 2 uker</span>
+                              <input type="radio" name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Innen 4 uker</span>
+                              <input type="radio" name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Innen 8 uker</span>
+                              <input type="radio" name="rsvp" />
+                              <span className="a-option__background"></span>
+                            </div>
+                          </fieldset>
+                          <br></br>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="wrapper-class">
+                      <div className="m-form__group">
+                        <div className="wrapper-class">
+                          <fieldset>
+                            <span className="a-input__help">
+                              <p>Hvilken møteform foretrekker du?</p>
+                            </span>
+                            <div className="a-option">
+                              <span className="a-option__text">Fysisk møte</span>
+                              <input type="radio" name="rsvps" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Videomøte</span>
+                              <input type="radio" name="rsvps" />
+                              <span className="a-option__background"></span>
+                            </div>
+                            <div className="a-option">
+                              <span className="a-option__text">Telefonmøte</span>
+                              <input type="radio" name="rsvps" />
+                              <span className="a-option__background"></span>
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>}
+          {this.state.index == 7 && // FORM 7 BEGINS HERE
+            <div className="container">
+              <form role="form" className="o-form bgWhite">
+                <div className="o-form__inner">
+                  <div className="m-form__group">
+                    <label className="a-label">Oppsummering</label>
+                    <hr />
+                    <br></br>
+                    <span className="a-input__help">
+                      <label className="a-label">Tittel</label>
+                    </span>
+                    <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
+                    <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>
+                      <p>Ideen er (hvilken løsning)</p>
+                      <textarea className="a-textarea" rows={2} value={this.state.ideenEr} onChange={this.handleideenErChange.bind(this)}></textarea>
+                      <p style={{ fontFamily: "Circular" }}>som skal løse (hvilket problem)</p>
+                      <textarea className="a-textarea" rows={2} value={this.state.somSkalLose} onChange={this.handlesomSkalLoseChange.bind(this)}></textarea>
+                      <p>for (hvem)</p>
+                      <textarea className="a-textarea" rows={2} value={this.state.for} onChange={this.handleforChange.bind(this)}></textarea>
+                    </div>
+                  </div>
+                  <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
+                    <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ padding: "0px 20px 0px 20px" }}>Send inn</a>
+                  </div>
+                </div>
+              </form>
+            </div>}
           <div className="App container">
             <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Forrige</a>
             <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 35px 0px 35px" }}>Neste</a>
@@ -130,6 +432,8 @@ export default class App extends React.Component<any, any>{
 
   private previousClicked() {
     this.setState((prevState: { index: number; }) => {
+      if (prevState.index == 5)
+        this.componentForm4DidMount()
       if (prevState.index != 1)
         return { index: prevState.index - 1 }
       else
@@ -139,6 +443,8 @@ export default class App extends React.Component<any, any>{
 
   private nextClicked() {
     this.setState((prevState: { index: number; }) => {
+      if (prevState.index == 3)
+        this.componentForm4DidMount()
       if (prevState.index != 7)
         return { index: prevState.index + 1 }
       else
@@ -265,6 +571,22 @@ export default class App extends React.Component<any, any>{
 
   //Set variables for Form2
 
+  private handleTitleChange(event: { target: { value: any; }; }) {
+    this.settitle(event.target.value)
+  }
+
+  private handleideenErChange(event: { target: { value: any; }; }) {
+    this.setideenEr(event.target.value)
+  }
+
+  private handlesomSkalLoseChange(event: { target: { value: any; }; }) {
+    this.setsomSkalLose(event.target.value)
+  }
+
+  private handleforChange(event: { target: { value: any; }; }) {
+    this.setfor(event.target.value)
+  }
+
   private settitle(newTitle: string) {
     this.setState({ title: newTitle })
   }
@@ -281,7 +603,53 @@ export default class App extends React.Component<any, any>{
     this.setState({ for: newIde })
   }
 
+  // Set variables for Form3
+  // None needed so far
+
   // Set variables for Form4
+
+  private componentForm4DidMount() {
+    if (this.state.adviser == "Anita" || this.state.adviser == "Håkon" || this.state.adviser == "Hans Martin" || this.state.adviser == "IN")
+      this.setState({ localAdviserName: "" })
+  }
+
+  private changeAdviser(event: { target: { value: any; }; }) {
+    this.setState({ localAdviserName: "" })
+    this.setAdviser(event.target.value)
+  }
+
+  private changeTopicOne() {
+    this.setTopicOne()
+  }
+
+  private changeTopicTwo() {
+    this.setTopicTwo()
+  }
+
+  private changeTopicThree() {
+    this.setTopicThree()
+  }
+
+  private changeTopicFour() {
+    this.setTopicFour()
+  }
+
+  private changeTopicFive() {
+    this.setTopicFive()
+  }
+
+  private changeTopicSix() {
+    this.setTopicSix()
+  }
+
+  private changeTopicSeven() {
+    this.setTopicSeven()
+  }
+
+  private setLocalAdviserName(event: { target: { value: any; }; }) {
+    this.setState({ localAdviserName: event.target.value })
+    this.setAdviser(event.target.value)
+  }
 
   private setAdviser(newTitle: boolean) {
     this.setState({ adviser: newTitle })
@@ -337,5 +705,18 @@ export default class App extends React.Component<any, any>{
   }
 
   // Set variables for Form5
+
+  private setAnnetFalse(event: { target: { value: any; }; }) {
+    this.setState({ annet: false })
+  }
+
+  private setAnnetTrue() {
+    this.setState({ annet: true })
+  }
+
+  // Set variables for Form6
+
+  // Set variables for Form7
+
 
 }

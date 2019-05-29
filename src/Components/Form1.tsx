@@ -8,30 +8,30 @@ export default class Form1 extends React.Component<any, any>{
         super(props);
 
         this.state = {
-            introQuestionOne: "Gjelder dette en eller flere av disse næringene? (Jordbruk, Skogbruk, Reinsdrift)",
-            introQuestionTwo: "Ønsker du å utvikle et reisemål i Norge (opplevelse, mat, losji, e.l.?)",
+            introQuestionOneQ: "Gjelder dette en eller flere av disse næringene? (Jordbruk, Skogbruk, Reinsdrift)",
+            introQuestionTwoQ: "Ønsker du å utvikle et reisemål i Norge (opplevelse, mat, losji, e.l.?)",
 
-            phaseIdQuestionOne: "Har du gjort ferdig en grundig beskrivelse av prosjektet ditt for å få til et nytt produkt, en ny tjeneste, eller en ny måte å gjøre ting på?",
-            phaseIdQuestionTwo: "Har du på funnet ut om prosjektet ditt er teknisk mulig OG har interesserte kjøpere i markedet?",
-            phaseIdQuestionThree: "Er du så godt i gang med kundeprosjektet at du selger godt i ditt valgte marked?",
-            phaseIdQuestionFour: "Ser du etter muligheter til å utvide i helt nye markeder?",
+            phaseIdQuestionOneQ: "Har du gjort ferdig en grundig beskrivelse av prosjektet ditt for å få til et nytt produkt, en ny tjeneste, eller en ny måte å gjøre ting på?",
+            phaseIdQuestionTwoQ: "Har du på funnet ut om prosjektet ditt er teknisk mulig OG har interesserte kjøpere i markedet?",
+            phaseIdQuestionThreeQ: "Er du så godt i gang med kundeprosjektet at du selger godt i ditt valgte marked?",
+            phaseIdQuestionFourQ: "Ser du etter muligheter til å utvide i helt nye markeder?",
 
-            prePhaseQuestionOne: "Har du fått bekreftet behov for ideen din blant minst fem mulige kunder?",
-            prePhaseQuestionTwo: "Har du satt opp en organisasjon som kan ta prosjektet ditt videre de neste seks månedene?",
-            prePhaseQuestionThree: "Sliter du med å finansiere det første trinnet i ideen din?",
+            prePhaseQuestionOneQ: "Har du fått bekreftet behov for ideen din blant minst fem mulige kunder?",
+            prePhaseQuestionTwoQ: "Har du satt opp en organisasjon som kan ta prosjektet ditt videre de neste seks månedene?",
+            prePhaseQuestionThreeQ: "Sliter du med å finansiere det første trinnet i ideen din?",
 
-            earlyPhaseQuestionOne: "Har du penger til å finansiere de neste nødvendige tiltakene for prosjektet?",
-            earlyPhaseQuestionTwo: "Vil du ha nytte av å samarbeide med andre som har de samme utfordringene som deg?",
+            earlyPhaseQuestionOneQ: "Har du penger til å finansiere de neste nødvendige tiltakene for prosjektet?",
+            earlyPhaseQuestionTwoQ: "Vil du ha nytte av å samarbeide med andre som har de samme utfordringene som deg?",
 
-            operationalPhaseQuestionOne: "Ønsker du å bygge kompetanse i avgjørende områder?",
-            operationalPhaseQuestionTwo: "Har du ambisjoner om å gå inn i et nytt marked?",
-            operationalPhaseQuestionThree: "Vil du ha nytte av å samarbeide med andre som har de samme utfordringene som deg?",
-            operationalPhaseQuestionFour: "Leter du etter en partner for samarbeid på et bestemt område?",
+            operationalPhaseQuestionOneQ: "Ønsker du å bygge kompetanse i avgjørende områder?",
+            operationalPhaseQuestionTwoQ: "Har du ambisjoner om å gå inn i et nytt marked?",
+            operationalPhaseQuestionThreeQ: "Vil du ha nytte av å samarbeide med andre som har de samme utfordringene som deg?",
+            operationalPhaseQuestionFourQ: "Leter du etter en partner for samarbeid på et bestemt område?",
 
-            growthPhaseQuestionOne: "Ønsker du å bygge kompetanse i avgjørende områder?",
-            growthPhaseQuestionTwo: "Ser du gode muligheter for å vokse deg større i markeder du allerede er i?",
-            growthPhaseQuestionThree: "Vil du vokse fortere hvis merkevaren din er bedre kjent i markedet du tar sikte på?",
-            growthPhaseQuestionFour: "Ønsker du å tiltrekke deg turister?"
+            growthPhaseQuestionOneQ: "Ønsker du å bygge kompetanse i avgjørende områder?",
+            growthPhaseQuestionTwoQ: "Ser du gode muligheter for å vokse deg større i markeder du allerede er i?",
+            growthPhaseQuestionThreeQ: "Vil du vokse fortere hvis merkevaren din er bedre kjent i markedet du tar sikte på?",
+            growthPhaseQuestionFourQ: "Ønsker du å tiltrekke deg turister?"
         };
     }
 
@@ -60,30 +60,30 @@ export default class Form1 extends React.Component<any, any>{
                                 <hr />
                                 <div className="App container" style={{ padding: "0px 20% 0px 20%" }}>
                                     {this.props.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Ferdig</label>}
-                                    {this.props.getQuestionIndex() == 1 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.introQuestionOne}</label>}
-                                    {this.props.getQuestionIndex() == 2 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.introQuestionTwo}</label>}
+                                    {this.props.getQuestionIndex() == 1 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.introQuestionOneQ}</label>}
+                                    {this.props.getQuestionIndex() == 2 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.introQuestionTwoQ}</label>}
 
-                                    {this.props.getQuestionIndex() == 3 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.phaseIdQuestionOne}</label>}
-                                    {this.props.getQuestionIndex() == 4 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.phaseIdQuestionTwo}</label>}
-                                    {this.props.getQuestionIndex() == 5 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.phaseIdQuestionThree}</label>}
+                                    {this.props.getQuestionIndex() == 3 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.phaseIdQuestionOneQ}</label>}
+                                    {this.props.getQuestionIndex() == 4 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.phaseIdQuestionTwoQ}</label>}
+                                    {this.props.getQuestionIndex() == 5 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.phaseIdQuestionThreeQ}</label>}
                                     {this.props.getQuestionIndex() == 6 && this.props.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.phaseIdQuestionFour}</label>}
 
-                                    {this.props.getQuestionIndex() == 5 && this.props.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.prePhaseQuestionOne}</label>}
-                                    {this.props.getQuestionIndex() == 6 && this.props.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.prePhaseQuestionTwo}</label>}
-                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.prePhaseQuestionThree}</label>}
+                                    {this.props.getQuestionIndex() == 5 && this.props.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.prePhaseQuestionOneQ}</label>}
+                                    {this.props.getQuestionIndex() == 6 && this.props.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.prePhaseQuestionTwoQ}</label>}
+                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.prePhaseQuestionThreeQ}</label>}
 
-                                    {this.props.getQuestionIndex() == 6 && this.props.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.earlyPhaseQuestionOne}</label>}
-                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.earlyPhaseQuestionTwo}</label>}
+                                    {this.props.getQuestionIndex() == 6 && this.props.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.earlyPhaseQuestionOneQ}</label>}
+                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.earlyPhaseQuestionTwoQ}</label>}
 
-                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionOne}</label>}
-                                    {this.props.getQuestionIndex() == 8 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionTwo}</label>}
-                                    {this.props.getQuestionIndex() == 9 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionThree}</label>}
-                                    {this.props.getQuestionIndex() == 10 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionFour}</label>}
+                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionOneQ}</label>}
+                                    {this.props.getQuestionIndex() == 8 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionTwoQ}</label>}
+                                    {this.props.getQuestionIndex() == 9 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionThreeQ}</label>}
+                                    {this.props.getQuestionIndex() == 10 && this.props.getPhase() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.operationalPhaseQuestionFourQ}</label>}
 
-                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionOne}</label>}
-                                    {this.props.getQuestionIndex() == 8 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionTwo}</label>}
-                                    {this.props.getQuestionIndex() == 9 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionThree}</label>}
-                                    {this.props.getQuestionIndex() == 10 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionFour}</label>}
+                                    {this.props.getQuestionIndex() == 7 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionOneQ}</label>}
+                                    {this.props.getQuestionIndex() == 8 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionTwoQ}</label>}
+                                    {this.props.getQuestionIndex() == 9 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionThreeQ}</label>}
+                                    {this.props.getQuestionIndex() == 10 && this.props.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.growthPhaseQuestionFourQ}</label>}
                                 </div>
                                 <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
                                     {!this.props.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.props.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px", border: "outset" }}>Nei</a>}

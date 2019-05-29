@@ -12,14 +12,14 @@ export default class Form4 extends React.Component<any, any>{
         this.setLocalAdviserName = this.setLocalAdviserName.bind(this)
 
         this.state = {
-            title: 'Navn på ønsket rådgiver',
+            localTitle: 'Navn på ønsket rådgiver',
             localAdviserName: this.props.adviser
         };
     }
 
     componentDidMount() {
-        if (this.props.adviser == "Anita" || this.props.adviser == "Håkon" ||this.props.adviser == "Hans Martin" ||this.props.adviser == "IN")
-            this.setState({localAdviserName: ""})
+        if (this.props.adviser == "Anita" || this.props.adviser == "Håkon" || this.props.adviser == "Hans Martin" || this.props.adviser == "IN")
+            this.setState({ localAdviserName: "" })
     }
 
     public render() {
@@ -57,7 +57,7 @@ export default class Form4 extends React.Component<any, any>{
                                         <span className="a-input__help">
                                             <p><br></br>Andre:</p>
                                         </span>
-                                        <input type="text" className="a-input" value={this.state.localAdviserName} onChange={this.setLocalAdviserName.bind(this)} placeholder={this.state.title} style={{ maxWidth: "297.6px" }} />
+                                        <input type="text" className="a-input" value={this.state.localAdviserName} onChange={this.setLocalAdviserName.bind(this)} placeholder={this.state.localTitle} style={{ maxWidth: "297.6px" }} />
                                         <span className="a-input__help">
                                             <p><br></br>Eller:</p>
                                         </span>
@@ -78,38 +78,45 @@ export default class Form4 extends React.Component<any, any>{
                                     <fieldset>
                                         <div className="a-option">
                                             <span className="a-option__text">Oppstart</span>
-                                            <input type="checkbox" onChange={this.changeTopicOne.bind(this)} name="rsvp_checkmark" />
+                                            {this.props.topicOne && <input type="checkbox" onChange={this.changeTopicOne.bind(this)} checked={true} name="rsvp_checkmark" />}
+                                            {!this.props.topicOne && <input type="checkbox" onChange={this.changeTopicOne.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Skalering</span>
-                                            <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} name="rsvp_checkmark" />
+                                            {this.props.topicTwo && <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} checked={true} name="rsvp_checkmark" />}
+                                            {!this.props.topicTwo && <input type="checkbox" onChange={this.changeTopicTwo.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Utvikling av bedrift</span>
-                                            <input type="checkbox" onChange={this.changeTopicThree.bind(this)} name="rsvp_checkmark" />
+                                            {this.props.topicThree && <input type="checkbox" onChange={this.changeTopicThree.bind(this)} checked={true} name="rsvp_checkmark" />}
+                                            {!this.props.topicThree && <input type="checkbox" onChange={this.changeTopicThree.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
-                                        
+
                                         <div className="a-option">
                                             <span className="a-option__text">Nå internasjonale markeder</span>
-                                            <input type="checkbox" onChange={this.changeTopicFour.bind(this)} name="rsvp_checkmark" />
+                                            {this.props.topicFour && <input type="checkbox" onChange={this.changeTopicFour.bind(this)} checked={true} name="rsvp_checkmark" />}
+                                            {!this.props.topicFour && <input type="checkbox" onChange={this.changeTopicFour.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Investering i landbruk</span>
-                                            <input type="checkbox" onChange={this.changeTopicFive.bind(this)} name="rsvp_checkmark" />
+                                            {this.props.topicFive && <input type="checkbox" onChange={this.changeTopicFive.bind(this)} checked={true} name="rsvp_checkmark" />}
+                                            {!this.props.topicFive && <input type="checkbox" onChange={this.changeTopicFive.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Beskyttelse av din ide</span>
-                                            <input type="checkbox" onChange={this.changeTopicSix.bind(this)} name="rsvp_checkmark" />
+                                            {this.props.topicSix && <input type="checkbox" onChange={this.changeTopicSix.bind(this)} checked={true} name="rsvp_checkmark" />}
+                                            {!this.props.topicSix && <input type="checkbox" onChange={this.changeTopicSix.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
                                         <div className="a-option">
                                             <span className="a-option__text">Finansiering</span>
-                                            <input type="checkbox" onChange={this.changeTopicSeven.bind(this)} name="rsvp_checkmark" />
+                                            {this.props.topicSeven && <input type="checkbox" onChange={this.changeTopicSeven.bind(this)} checked={true} name="rsvp_checkmark" />}
+                                            {!this.props.topicSeven && <input type="checkbox" onChange={this.changeTopicSeven.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
                                     </fieldset>
