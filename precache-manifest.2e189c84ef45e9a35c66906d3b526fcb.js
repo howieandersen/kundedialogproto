@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d438097e0ebd48ba42c3e3486011921b",
+    "revision": "2122d2735085823402c25d028e5ce9a2",
     "url": "/kundedialogproto/index.html"
   },
   {
-    "revision": "e7bf3214ad8d2fed34a3",
+    "revision": "1807da126a3c014b952a",
     "url": "/kundedialogproto/static/css/main.efe08ff8.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kundedialogproto/static/js/2.7a2efaab.chunk.js"
   },
   {
-    "revision": "e7bf3214ad8d2fed34a3",
-    "url": "/kundedialogproto/static/js/main.dd738bc9.chunk.js"
+    "revision": "1807da126a3c014b952a",
+    "url": "/kundedialogproto/static/js/main.9c48320b.chunk.js"
   },
   {
     "revision": "a2a4c14b839e30e847f1",
