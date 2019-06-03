@@ -55,6 +55,8 @@ export default class App extends React.Component<any, any>{
     this.setdiskuterfinansiering = this.setdiskuterfinansiering.bind(this);
     this.setdiskuterannet = this.setdiskuterannet.bind(this);
 
+    this.trykksendinn = this.trykksendinn.bind(this);
+
     this.state = {
       index: 1, //This indicates which Form (which step) component the user is currently looking at
       syvKjappeIndex: 1, // This indicates which question the user is currently viewing in Form1 (Innledende spørsmål)
@@ -143,6 +145,9 @@ export default class App extends React.Component<any, any>{
       // Form6
       when: "",
       how: "",
+
+      // Form7
+      sendinn: false,
     };
   }
 
@@ -180,7 +185,7 @@ export default class App extends React.Component<any, any>{
                         {this.getQuestionIndex() == 3 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionOneQ}</label>}
                         {this.getQuestionIndex() == 4 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionTwoQ}</label>}
                         {this.getQuestionIndex() == 5 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionThreeQ}</label>}
-                        {this.getQuestionIndex() == 6 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionFour}</label>}
+                        {this.getQuestionIndex() == 6 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QphaseIdQuestionFourQ}</label>}
 
                         {this.getQuestionIndex() == 5 && this.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QprePhaseQuestionOneQ}</label>}
                         {this.getQuestionIndex() == 6 && this.getPhase() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QprePhaseQuestionTwoQ}</label>}
@@ -282,26 +287,26 @@ export default class App extends React.Component<any, any>{
                             </span>
                             <div className="a-option">
                               <span className="a-option__text">Kompetanse</span>
-                              {this.state.diskuter == "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
-                              {this.state.diskuter != "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Råd</span>
-                              {this.state.diskuter == "advice" && <input type="radio" value="advice" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
-                              {this.state.diskuter != "advice" && <input type="radio" value="advice" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "advice" && <input type="radio" value="advice" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "advice" && <input type="radio" value="advice" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Nettverk</span>
-                              {this.state.diskuter == "nettverk" && <input type="radio" value="nettverk" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
-                              {this.state.diskuter != "nettverk" && <input type="radio" value="nettverk" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "nettverk" && <input type="radio" value="nettverk" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "nettverk" && <input type="radio" value="nettverk" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
                               <span className="a-option__text">Finansiering</span>
-                              {this.state.diskuter == "finansiering" && <input type="radio" value="finansiering" onChange={this.setdiskuter.bind(this)} checked={true} name="rsvp" />}
-                              {this.state.diskuter != "finansiering" && <input type="radio" value="finansiering" onChange={this.setdiskuter.bind(this)} name="rsvp" />}
+                              {this.state.diskuter == "finansiering" && <input type="radio" value="finansiering" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "finansiering" && <input type="radio" value="finansiering" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
@@ -378,7 +383,7 @@ export default class App extends React.Component<any, any>{
                             <div className="a-option">
                               <span className="a-option__text">Fysisk møte</span>
                               {this.state.how != "fysisk møte" && <input type="radio" value="fysisk møte" onChange={this.sethow.bind(this)} name="rsvps" />}
-                              {this.state.how == "fysisk møte" && <input type="radio" value="fysisk møte" onChange={this.sethow.bind(this)} checked={true} name="rsvps" />} 
+                              {this.state.how == "fysisk møte" && <input type="radio" value="fysisk møte" onChange={this.sethow.bind(this)} checked={true} name="rsvps" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
@@ -410,18 +415,37 @@ export default class App extends React.Component<any, any>{
                     <hr />
                     <br></br>
                     <span className="a-input__help">
-                      <label className="a-label">Tittel</label>
+                      <label className="a-label" style={{ wordWrap: "break-word" }}>{this.state.title}</label>
                     </span>
-                    <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
                     <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>
-                      <p>Ideen er (hvilken løsning)</p>
-                      <textarea className="a-textarea" rows={2} value={this.state.ideenEr} onChange={this.handleideenErChange.bind(this)}></textarea>
-                      <p style={{ fontFamily: "Circular" }}>som skal løse (hvilket problem)</p>
-                      <textarea className="a-textarea" rows={2} value={this.state.somSkalLose} onChange={this.handlesomSkalLoseChange.bind(this)}></textarea>
-                      <p>for (hvem)</p>
-                      <textarea className="a-textarea" rows={2} value={this.state.for} onChange={this.handleforChange.bind(this)}></textarea>
+                      <p style={{ fontFamily: "Circular", fontStyle: "italic"}}>Ideen er (hvilken løsning)</p>
+                      <span className="a-input__help">
+                        <p style={{ wordWrap: "break-word" }}>{this.state.ideenEr}</p>
+                      </span>
+                      <p style={{ fontFamily: "Circular", fontStyle: "italic"}}>som skal løse (hvilket problem)</p>
+                      <span className="a-input__help">
+                        <p style={{ wordWrap: "break-word" }}>{this.state.somSkalLose}</p>
+                      </span>
+                      <p style={{ fontFamily: "Circular", fontStyle: "italic"}}>for (hvem)</p>
+                      <span className="a-input__help">
+                        <p style={{ wordWrap: "break-word" }}>{this.state.for}</p>
+                      </span>
                     </div>
                   </div>
+                  <span className="a-input__help">
+                    {this.state.adviser == "IN" && <p>Din rådgiver blir valgt av Innovasjon Norge.</p>}
+                    {this.state.adviser != "IN" && <p>Din rådgiver er: {this.state.adviser}.</p>}
+                  </span>
+                  <span className="a-input__help">
+                    {this.state.diskuter != "advice" && <p>Du vil snakke med oss om {this.state.diskuter}.</p>}
+                    {this.state.diskuter == "advice" && <p>Du vil snakke med oss om råd.</p>}
+                  </span>
+                  <span className="a-input__help">
+                    {<p>Du vil møte oss {this.state.when}.</p>}
+                  </span>
+                  <span className="a-input__help">
+                    {<p>Du foretrekker {this.state.how}.</p>}
+                  </span>
                   <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
                     <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ padding: "0px 20px 0px 20px" }}>Send inn</a>
                   </div>
@@ -443,7 +467,7 @@ export default class App extends React.Component<any, any>{
   }
 
 
-  //Main App functions
+  // Functions for App component
 
   private previousClicked() {
     this.setState((prevState: { index: number; }) => {
@@ -475,7 +499,7 @@ export default class App extends React.Component<any, any>{
     this.setState({ index: targetPage })
   }
 
-  //Play with syv kjappe spørsmål
+  //Functions for Form1
 
   private getQuestionIndex() {
     return this.state.syvKjappeIndex
@@ -584,7 +608,7 @@ export default class App extends React.Component<any, any>{
       this.setState({ growthPhaseQuestionFour: answer, syvKjappeFerdig: true })
   }
 
-  //Set variables for Form2
+  //Functions for Form2
 
   private handleTitleChange(event: { target: { value: any; }; }) {
     this.settitle(event.target.value)
@@ -618,10 +642,10 @@ export default class App extends React.Component<any, any>{
     this.setState({ for: newIde })
   }
 
-  // Set variables for Form3
+  // Functions for Form3
   // None needed so far
 
-  // Set variables for Form4
+  // Functions for Form4
 
   private componentForm4DidMount() {
     if (this.state.adviser == "Anita" || this.state.adviser == "Håkon" || this.state.adviser == "Hans Martin" || this.state.adviser == "IN")
@@ -691,7 +715,7 @@ export default class App extends React.Component<any, any>{
       this.setState({ topicSeven: true })
   }
 
-  // Set variables for Form5
+  // Functions for Form5
 
   private setAnnetFalse(event: { target: { value: any; }; }) {
     this.setState({
@@ -712,6 +736,13 @@ export default class App extends React.Component<any, any>{
 
   private setdiskuter(event: { target: { value: any; }; }) {
     this.setState({
+      diskuter: event.target.value,
+    })
+  }
+
+  private setdiskuterutenomannet(event: { target: { value: any; }; }) {
+    this.setState({
+      annet: false,
       diskuter: event.target.value,
     })
   }
@@ -771,7 +802,7 @@ export default class App extends React.Component<any, any>{
     })
   }
 
-  // Set variables for Form6
+  // Functions for Form6
 
   private setwhen(event: { target: { value: any; }; }) {
     this.setState({
@@ -785,6 +816,8 @@ export default class App extends React.Component<any, any>{
     })
   }
 
-  // Set variables for Form7
-
+  // Functions for Form7
+  private trykksendinn() {
+    this.setState({sendinn: true})
+  }
 }
