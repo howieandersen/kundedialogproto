@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/kundedialogproto/static/css/main.efe08ff8.chunk.css",
-    "main.js": "/kundedialogproto/static/js/main.a527c3da.chunk.js",
-    "main.js.map": "/kundedialogproto/static/js/main.a527c3da.chunk.js.map",
+    "main.js": "/kundedialogproto/static/js/main.e04cf09e.chunk.js",
+    "main.js.map": "/kundedialogproto/static/js/main.e04cf09e.chunk.js.map",
     "runtime~main.js": "/kundedialogproto/static/js/runtime~main.3bc7d88d.js",
     "runtime~main.js.map": "/kundedialogproto/static/js/runtime~main.3bc7d88d.js.map",
     "static/js/2.7a2efaab.chunk.js": "/kundedialogproto/static/js/2.7a2efaab.chunk.js",
     "static/js/2.7a2efaab.chunk.js.map": "/kundedialogproto/static/js/2.7a2efaab.chunk.js.map",
     "index.html": "/kundedialogproto/index.html",
-    "precache-manifest.6415759a44c4ad14f9af26eca3934c82.js": "/kundedialogproto/precache-manifest.6415759a44c4ad14f9af26eca3934c82.js",
+    "precache-manifest.6130e441d9aa8f4cf612321c036b0c6a.js": "/kundedialogproto/precache-manifest.6130e441d9aa8f4cf612321c036b0c6a.js",
     "service-worker.js": "/kundedialogproto/service-worker.js",
     "static/css/main.efe08ff8.chunk.css.map": "/kundedialogproto/static/css/main.efe08ff8.chunk.css.map"
   }
