@@ -64,6 +64,16 @@ export default class App extends React.Component<any, any>{
       phase: 0, // 0 = innledende spørsmål & velge fase, 1 = prephase, 2 = early phase, 3 = operational phase, 4 = growth phase
 
       // Form1
+
+      questionOne: "Vil ditt prosjekt resultere i noe vesentlig nytt i markedet?",
+      questionTwo: "Vet du om det finnes et betalingsvillig marked for ideen din?",
+      questionThree: "Har du avklart om ditt prosjekt er teknisk mulig å utvikle?",
+      questionFour: "Har du begynt å tjene penger på prosjektet?",
+      questionFive: "Har du et team som kan ta prosjektet videre?",
+      questionSix: "Har du penger til å finansiere de neste nødvendige tiltakene for prosjektet?",
+      questionSeven: "Trenger du å bygge kompetanse i avgjørende områder?",
+      questionEight: "Har du ambisjoner om å gå inn i et nytt marked?",
+
       QintroQuestionOneQ: "Gjelder dette en eller flere av disse næringene? (Jordbruk, Skogbruk, Reinsdrift)",
       QintroQuestionTwoQ: "Ønsker du å utvikle et reisemål i Norge (opplevelse, mat, losji, e.l.?)",
 
@@ -88,6 +98,15 @@ export default class App extends React.Component<any, any>{
       QgrowthPhaseQuestionTwoQ: "Ser du gode muligheter for å vokse deg større i markeder du allerede er i?",
       QgrowthPhaseQuestionThreeQ: "Vil du vokse fortere hvis merkevaren din er bedre kjent i markedet du tar sikte på?",
       QgrowthPhaseQuestionFourQ: "Ønsker du å tiltrekke deg turister?",
+
+      answerOne: false,
+      answerTwo: false,
+      answerThree: false,
+      answerFour: false,
+      answerFive: false,
+      answerSix: false,
+      answerSeven: false,
+      answerEight: false,
 
       introQuestionOne: false,
       introQuestionTwo: false,
@@ -161,24 +180,24 @@ export default class App extends React.Component<any, any>{
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
                   <div className="m-form__group">
-                    {this.getQuestionIndex() <= 2 && <label className="a-label">Innledende spørsmål</label>}
-                    {this.getQuestionIndex() >= 3 && this.getPhase() == 0 && <label className="a-label">Identifisere fase</label>}
+                    <label className="a-label">Innledende spørsmål</label>
+                    {/* {this.getQuestionIndex() >= 3 && this.getPhase() == 0 && <label className="a-label">Identifisere fase</label>}
                     {this.getQuestionIndex() >= 5 && this.getPhase() == 1 && <label className="a-label">Identifisere problemer for prefase</label>}
                     {this.getQuestionIndex() >= 6 && this.getPhase() == 2 && <label className="a-label">Identifisere problemer for tidlig fase</label>}
                     {this.getQuestionIndex() >= 7 && this.getPhase() == 3 && <label className="a-label">Identifisere problemer for operasjonell fase</label>}
-                    {this.getQuestionIndex() >= 7 && this.getPhase() == 4 && <label className="a-label">Identifisere problemer for vekstfase</label>}
+                    {this.getQuestionIndex() >= 7 && this.getPhase() == 4 && <label className="a-label">Identifisere problemer for vekstfase</label>} */}
                     <div className="wrapper-class">
                       <span className="a-input__help">
-                        {this.getQuestionIndex() <= 2 && <p>Innovasjon Norge leverer mer enn bare tilskudd og lån. Vi har mange kunderådgivere som kan hjelpe deg og din bedrift med ulike kompetansetjenester. Svar på spørsmålene under for å finne ut hvordan vi kan hjelpe deg på mest mulig måte.</p>}
-                        {this.getQuestionIndex() > 2 && this.getPhase() == 0 && <p>Her identifiserer vi fase</p>}
+                        <p>Innovasjon Norge leverer mer enn bare tilskudd og lån. Vi har mange kunderådgivere som kan hjelpe deg og din bedrift med ulike kompetansetjenester. Svar på spørsmålene under for å finne ut hvordan vi kan hjelpe deg på mest mulig måte.</p>
+                        {/* {this.getQuestionIndex() > 2 && this.getPhase() == 0 && <p>Her identifiserer vi fase</p>}
                         {this.getQuestionIndex() >= 5 && this.getPhase() == 1 && <p>Her identifiserer vi problemer for prefase</p>}
                         {this.getQuestionIndex() >= 6 && this.getPhase() == 2 && <p>Her identifiserer vi problemer for tidlig fase</p>}
                         {this.getQuestionIndex() >= 7 && this.getPhase() == 3 && <p>Her identifiserer vi problemer for operasjonell fase</p>}
-                        {this.getQuestionIndex() >= 7 && this.getPhase() == 4 && <p>Her identifiserer vi problemer for vekstfase</p>}
+                        {this.getQuestionIndex() >= 7 && this.getPhase() == 4 && <p>Her identifiserer vi problemer for vekstfase</p>} */}
                       </span>
                       <hr />
                       <div className="App container" style={{ padding: "0px 20% 0px 20%" }}>
-                        {this.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Ferdig</label>}
+                        {/* {this.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Ferdig</label>}
                         {this.getQuestionIndex() == 1 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QintroQuestionOneQ}</label>}
                         {this.getQuestionIndex() == 2 && this.getPhase() == 0 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QintroQuestionTwoQ}</label>}
 
@@ -202,7 +221,18 @@ export default class App extends React.Component<any, any>{
                         {this.getQuestionIndex() == 7 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionOneQ}</label>}
                         {this.getQuestionIndex() == 8 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionTwoQ}</label>}
                         {this.getQuestionIndex() == 9 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionThreeQ}</label>}
-                        {this.getQuestionIndex() == 10 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionFourQ}</label>}
+                        {this.getQuestionIndex() == 10 && this.getPhase() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.QgrowthPhaseQuestionFourQ}</label>} */}
+
+                        {this.getQuestionIndex() == 1 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionOne}</label>}
+                        {this.getQuestionIndex() == 2 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionTwo}</label>}
+                        {this.getQuestionIndex() == 3 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionThree}</label>}
+                        {this.getQuestionIndex() == 4 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionFour}</label>}
+                        {this.getQuestionIndex() == 5 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionFive}</label>}
+                        {this.getQuestionIndex() == 6 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionSix}</label>}
+                        {this.getQuestionIndex() == 7 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionSeven}</label>}
+                        {this.getQuestionIndex() == 8 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionEight}</label>}
+                        {this.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Ferdig</label>}
+
                       </div>
                       <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
                         {!this.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px", border: "outset" }}>Nei</a>}
@@ -259,19 +289,7 @@ export default class App extends React.Component<any, any>{
                 </div>
               </form>
             </div>}
-
-          {/* Keep Form4 in seperate component file as we are required to use its componentDidMount() function to correctly display values */}
-
-          {this.state.index == 4 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser}
-            setTopicOne={this.setTopicOne} topicOne={this.state.topicOne}
-            setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo}
-            setTopicThree={this.setTopicThree} topicThree={this.state.topicThree}
-            setTopicFour={this.setTopicFour} topicFour={this.state.topicFour}
-            setTopicFive={this.setTopicFive} topicFive={this.state.topicFive}
-            setTopicSix={this.setTopicSix} topicSix={this.state.topicSix}
-            setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
-
-          {this.state.index == 5 && // FORM5 BEGINS HERE
+          {this.state.index == 4 && // FORM5 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
@@ -324,6 +342,19 @@ export default class App extends React.Component<any, any>{
                 </div>
               </form>
             </div>}
+
+          {/* Keep Form4 in seperate component file as we are required to use its componentDidMount() function to correctly display values */}
+
+          {this.state.index == 5 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser}
+            setTopicOne={this.setTopicOne} topicOne={this.state.topicOne}
+            setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo}
+            setTopicThree={this.setTopicThree} topicThree={this.state.topicThree}
+            setTopicFour={this.setTopicFour} topicFour={this.state.topicFour}
+            setTopicFive={this.setTopicFive} topicFive={this.state.topicFive}
+            setTopicSix={this.setTopicSix} topicSix={this.state.topicSix}
+            setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
+
+
           {this.state.index == 6 && // FORM6 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
@@ -418,15 +449,15 @@ export default class App extends React.Component<any, any>{
                       <label className="a-label" style={{ wordWrap: "break-word" }}>{this.state.title}</label>
                     </span>
                     <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>
-                      <p style={{ fontFamily: "Circular", fontStyle: "italic"}}>Ideen er (hvilken løsning)</p>
+                      <p style={{ fontFamily: "Circular", fontStyle: "italic" }}>Ideen er (hvilken løsning)</p>
                       <span className="a-input__help">
                         <p style={{ wordWrap: "break-word" }}>{this.state.ideenEr}</p>
                       </span>
-                      <p style={{ fontFamily: "Circular", fontStyle: "italic"}}>som skal løse (hvilket problem)</p>
+                      <p style={{ fontFamily: "Circular", fontStyle: "italic" }}>som skal løse (hvilket problem)</p>
                       <span className="a-input__help">
                         <p style={{ wordWrap: "break-word" }}>{this.state.somSkalLose}</p>
                       </span>
-                      <p style={{ fontFamily: "Circular", fontStyle: "italic"}}>for (hvem)</p>
+                      <p style={{ fontFamily: "Circular", fontStyle: "italic" }}>for (hvem)</p>
                       <span className="a-input__help">
                         <p style={{ wordWrap: "break-word" }}>{this.state.for}</p>
                       </span>
@@ -523,10 +554,13 @@ export default class App extends React.Component<any, any>{
     this.setAnswer(true)
 
     this.setState((prevState: { syvKjappeIndex: number; }) => {
-      if (this.state.phase == 0 && prevState.syvKjappeIndex == 6)
-        return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 4 }
-      else
-        return { syvKjappeIndex: prevState.syvKjappeIndex + 1 }
+      //   if (this.state.phase == 0 && prevState.syvKjappeIndex == 6)
+      //     return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 4 }
+      //   else
+      //     return { syvKjappeIndex: prevState.syvKjappeIndex + 1 }
+      // })
+
+      return { syvKjappeIndex: prevState.syvKjappeIndex + 1 }
     })
   }
 
@@ -534,14 +568,14 @@ export default class App extends React.Component<any, any>{
     this.setAnswer(false)
 
     this.setState((prevState: { syvKjappeIndex: number; }) => {
-      if (this.state.phase == 0 && prevState.syvKjappeIndex == 4)
-        return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 1 }
-      else if (this.state.phase == 0 && prevState.syvKjappeIndex == 5)
-        return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 2 }
-      else if (this.state.phase == 0 && prevState.syvKjappeIndex == 6)
-        return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 3 }
-      else
-        return { syvKjappeIndex: prevState.syvKjappeIndex + 1 }
+      // if (this.state.phase == 0 && prevState.syvKjappeIndex == 4)
+      //   return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 1 }
+      // else if (this.state.phase == 0 && prevState.syvKjappeIndex == 5)
+      //   return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 2 }
+      // else if (this.state.phase == 0 && prevState.syvKjappeIndex == 6)
+      //   return { syvKjappeIndex: prevState.syvKjappeIndex + 1, phase: 3 }
+      // else
+      return { syvKjappeIndex: prevState.syvKjappeIndex + 1 }
     })
   }
 
@@ -549,63 +583,82 @@ export default class App extends React.Component<any, any>{
     this.setAnswer(false)
 
     this.setState((prevState: { syvKjappeIndex: number; }) => {
-      if (this.state.phase == 1 && prevState.syvKjappeIndex == 5)
-        return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
-      else if (this.state.phase == 2 && prevState.syvKjappeIndex == 6)
-        return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
-      else if (this.state.phase == 3 && prevState.syvKjappeIndex == 7)
-        return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
-      else if (this.state.phase == 4 && prevState.syvKjappeIndex == 7)
-        return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
-      else
-        return { syvKjappeIndex: prevState.syvKjappeIndex - 1, syvKjappeFerdig: false }
+      // if (this.state.phase == 1 && prevState.syvKjappeIndex == 5)
+      //   return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
+      // else if (this.state.phase == 2 && prevState.syvKjappeIndex == 6)
+      //   return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
+      // else if (this.state.phase == 3 && prevState.syvKjappeIndex == 7)
+      //   return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
+      // else if (this.state.phase == 4 && prevState.syvKjappeIndex == 7)
+      //   return { syvKjappeIndex: prevState.syvKjappeIndex - 1, phase: 0 }
+      // else
+
+      return { syvKjappeIndex: prevState.syvKjappeIndex - 1, syvKjappeFerdig: false }
     })
   }
 
   private setAnswer(answer: boolean) {
+    // if (this.state.syvKjappeIndex == 1)
+    //   this.setState({ introQuestionOne: answer })
+    // else if (this.state.syvKjappeIndex == 2)
+    //   this.setState({ introQuestionTwo: answer })
+
+    // else if (this.state.syvKjappeIndex == 3)
+    //   this.setState({ phaseIdQuestionOne: answer })
+    // else if (this.state.syvKjappeIndex == 4)
+    //   this.setState({ phaseIdQuestionTwo: answer })
+    // else if (this.state.syvKjappeIndex == 5 && this.state.phase == 0)
+    //   this.setState({ phaseIdQuestionThree: answer })
+    // else if (this.state.syvKjappeIndex == 6 && this.state.phase == 0)
+    //   this.setState({ phaseIdQuestionFour: answer })
+
+    // else if (this.state.syvKjappeIndex == 5 && this.state.phase == 1)
+    //   this.setState({ prePhaseQuestionOne: answer })
+    // else if (this.state.syvKjappeIndex == 6 && this.state.phase == 1)
+    //   this.setState({ prePhaseQuestionTwo: answer })
+    // else if (this.state.syvKjappeIndex == 7 && this.state.phase == 1)
+    //   this.setState({ prePhaseQuestionThree: answer, syvKjappeFerdig: true })
+
+    // else if (this.state.syvKjappeIndex == 6 && this.state.phase == 2)
+    //   this.setState({ earlyPhaseQuestionOne: answer })
+    // else if (this.state.syvKjappeIndex == 7 && this.state.phase == 2)
+    //   this.setState({ earlyPhaseQuestionTwo: answer, syvKjappeFerdig: true })
+
+    // else if (this.state.syvKjappeIndex == 7 && this.state.phase == 3)
+    //   this.setState({ operationalPhaseQuestionOne: answer })
+    // else if (this.state.syvKjappeIndex == 8 && this.state.phase == 3)
+    //   this.setState({ operationalPhaseQuestionTwo: answer })
+    // else if (this.state.syvKjappeIndex == 9 && this.state.phase == 3)
+    //   this.setState({ operationalPhaseQuestionThree: answer })
+    // else if (this.state.syvKjappeIndex == 10 && this.state.phase == 3)
+    //   this.setState({ operationalPhaseQuestionFour: answer, syvKjappeFerdig: true })
+
+    // else if (this.state.syvKjappeIndex == 7 && this.state.phase == 4)
+    //   this.setState({ growthPhaseQuestionOne: answer })
+    // else if (this.state.syvKjappeIndex == 8 && this.state.phase == 4)
+    //   this.setState({ growthPhaseQuestionTwo: answer })
+    // else if (this.state.syvKjappeIndex == 9 && this.state.phase == 4)
+    //   this.setState({ growthPhaseQuestionThree: answer })
+    // else if (this.state.syvKjappeIndex == 10 && this.state.phase == 4)
+    //   this.setState({ growthPhaseQuestionFour: answer, syvKjappeFerdig: true })
+
+
     if (this.state.syvKjappeIndex == 1)
-      this.setState({ introQuestionOne: answer })
+      this.setState({ answerOne: answer })
     else if (this.state.syvKjappeIndex == 2)
-      this.setState({ introQuestionTwo: answer })
-
+      this.setState({ answerTwo: answer })
     else if (this.state.syvKjappeIndex == 3)
-      this.setState({ phaseIdQuestionOne: answer })
+      this.setState({ answerThree: answer })
     else if (this.state.syvKjappeIndex == 4)
-      this.setState({ phaseIdQuestionTwo: answer })
-    else if (this.state.syvKjappeIndex == 5 && this.state.phase == 0)
-      this.setState({ phaseIdQuestionThree: answer })
-    else if (this.state.syvKjappeIndex == 6 && this.state.phase == 0)
-      this.setState({ phaseIdQuestionFour: answer })
-
-    else if (this.state.syvKjappeIndex == 5 && this.state.phase == 1)
-      this.setState({ prePhaseQuestionOne: answer })
-    else if (this.state.syvKjappeIndex == 6 && this.state.phase == 1)
-      this.setState({ prePhaseQuestionTwo: answer })
-    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 1)
-      this.setState({ prePhaseQuestionThree: answer, syvKjappeFerdig: true })
-
-    else if (this.state.syvKjappeIndex == 6 && this.state.phase == 2)
-      this.setState({ earlyPhaseQuestionOne: answer })
-    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 2)
-      this.setState({ earlyPhaseQuestionTwo: answer, syvKjappeFerdig: true })
-
-    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 3)
-      this.setState({ operationalPhaseQuestionOne: answer })
-    else if (this.state.syvKjappeIndex == 8 && this.state.phase == 3)
-      this.setState({ operationalPhaseQuestionTwo: answer })
-    else if (this.state.syvKjappeIndex == 9 && this.state.phase == 3)
-      this.setState({ operationalPhaseQuestionThree: answer })
-    else if (this.state.syvKjappeIndex == 10 && this.state.phase == 3)
-      this.setState({ operationalPhaseQuestionFour: answer, syvKjappeFerdig: true })
-
-    else if (this.state.syvKjappeIndex == 7 && this.state.phase == 4)
-      this.setState({ growthPhaseQuestionOne: answer })
-    else if (this.state.syvKjappeIndex == 8 && this.state.phase == 4)
-      this.setState({ growthPhaseQuestionTwo: answer })
-    else if (this.state.syvKjappeIndex == 9 && this.state.phase == 4)
-      this.setState({ growthPhaseQuestionThree: answer })
-    else if (this.state.syvKjappeIndex == 10 && this.state.phase == 4)
-      this.setState({ growthPhaseQuestionFour: answer, syvKjappeFerdig: true })
+      this.setState({ answerFour: answer })
+    else if (this.state.syvKjappeIndex == 5)
+      this.setState({ answerFive: answer })
+    else if (this.state.syvKjappeIndex == 6)
+      this.setState({ answerSix: answer })
+    else if (this.state.syvKjappeIndex == 7)
+      this.setState({ answerSeven: answer })
+    else if (this.state.syvKjappeIndex == 8)
+      this.setState({ answerEight: answer, syvKjappeFerdig: true })
   }
 
   //Functions for Form2
@@ -818,6 +871,6 @@ export default class App extends React.Component<any, any>{
 
   // Functions for Form7
   private trykksendinn() {
-    this.setState({sendinn: true})
+    this.setState({ sendinn: true })
   }
 }
