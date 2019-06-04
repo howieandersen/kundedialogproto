@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/kundedialogproto/precache-manifest.73de8c7b29bcd30495d8c54d5f8a04e8.js"
+  "/kundedialogproto/precache-manifest.0a49918ee18338b6474e45040c343b70.js"
 );
 
 self.addEventListener('message', (event) => {
