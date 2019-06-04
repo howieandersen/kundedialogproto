@@ -113,12 +113,6 @@ export default class Form4 extends React.Component<any, any>{
                                             {!this.props.topicSix && <input type="checkbox" onChange={this.changeTopicSix.bind(this)} name="rsvp_checkmark" />}
                                             <span className="a-option__background"></span>
                                         </div>
-                                        <div className="a-option">
-                                            <span className="a-option__text">Finansiering</span>
-                                            {this.props.topicSeven && <input type="checkbox" onChange={this.changeTopicSeven.bind(this)} checked={true} name="rsvp_checkmark" />}
-                                            {!this.props.topicSeven && <input type="checkbox" onChange={this.changeTopicSeven.bind(this)} name="rsvp_checkmark" />}
-                                            <span className="a-option__background"></span>
-                                        </div>
                                     </fieldset>
                                 </div>}
                         </div>

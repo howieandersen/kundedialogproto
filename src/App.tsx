@@ -56,6 +56,7 @@ export default class App extends React.Component<any, any>{
     this.setdiskuterannet = this.setdiskuterannet.bind(this);
 
     this.trykksendinn = this.trykksendinn.bind(this);
+    this.goBackFromSubmitted = this.goBackFromSubmitted.bind(this);
 
     this.state = {
       index: 1, //This indicates which Form (which step) component the user is currently looking at
@@ -175,12 +176,12 @@ export default class App extends React.Component<any, any>{
       <div className="App" style={{ paddingBottom: "30px" }}>
         <Header />
         <div style={{ width: "40%", minWidth: "800px", margin: "auto" }}>
-          {this.state.index == 1 && // FORM 1 BEGINS HERE
+          {this.state.index == 5 && // FORM 1 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
                   <div className="m-form__group">
-                    <label className="a-label">Innledende spørsmål</label>
+                    <label className="a-label">Avklarende spørsmål</label>
                     {/* {this.getQuestionIndex() >= 3 && this.getPhase() == 0 && <label className="a-label">Identifisere fase</label>}
                     {this.getQuestionIndex() >= 5 && this.getPhase() == 1 && <label className="a-label">Identifisere problemer for prefase</label>}
                     {this.getQuestionIndex() >= 6 && this.getPhase() == 2 && <label className="a-label">Identifisere problemer for tidlig fase</label>}
@@ -188,7 +189,7 @@ export default class App extends React.Component<any, any>{
                     {this.getQuestionIndex() >= 7 && this.getPhase() == 4 && <label className="a-label">Identifisere problemer for vekstfase</label>} */}
                     <div className="wrapper-class">
                       <span className="a-input__help">
-                        <p>Innovasjon Norge leverer mer enn bare tilskudd og lån. Vi har mange kunderådgivere som kan hjelpe deg og din bedrift med ulike kompetansetjenester. Svar på spørsmålene under for å finne ut hvordan vi kan hjelpe deg på mest mulig måte.</p>
+                        <p>Vi har mange kunderådgivere som kan hjelpe deg og din bedrift med ulike kompetansetjenester. Svar på noen Ja-/Nei-spørsmål for at vi raskt skal kunne hjelpe deg på best mulig måte.</p>
                         {/* {this.getQuestionIndex() > 2 && this.getPhase() == 0 && <p>Her identifiserer vi fase</p>}
                         {this.getQuestionIndex() >= 5 && this.getPhase() == 1 && <p>Her identifiserer vi problemer for prefase</p>}
                         {this.getQuestionIndex() >= 6 && this.getPhase() == 2 && <p>Her identifiserer vi problemer for tidlig fase</p>}
@@ -231,13 +232,13 @@ export default class App extends React.Component<any, any>{
                         {this.getQuestionIndex() == 6 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionSix}</label>}
                         {this.getQuestionIndex() == 7 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionSeven}</label>}
                         {this.getQuestionIndex() == 8 && <label className="a-label" style={{ textAlign: "center" }}>{this.state.questionEight}</label>}
-                        {this.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Ferdig</label>}
+                        {this.getSyvKjappeFerdig() && <label className="a-label" style={{ textAlign: "center" }}>Takk</label>}
 
                       </div>
                       <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
-                        {!this.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.questionAnswerNo} style={{ float: "left", padding: "0px 45px 0px 45px", border: "outset" }}>Nei</a>}
+                        {!this.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.questionAnswerYes} style={{ float: "left", padding: "0px 45px 0px 45px", border: "outset" }}>Ja</a>}
                         {this.getQuestionIndex() > 1 && <a className="a-btn small" onClick={this.previousQuestion} style={{ margin: "5px 0px 5px 0px" }}>Tilbake</a>}
-                        {!this.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.questionAnswerYes} style={{ float: "right", padding: "0px 48px 0px 48px", border: "outset" }}>Ja</a>}
+                        {!this.getSyvKjappeFerdig() && <a className="a-btn border" onClick={this.questionAnswerNo} style={{ float: "right", padding: "0px 48px 0px 48px", border: "outset" }}>Nei</a>}
                       </div>
                       <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
                       </div>
@@ -246,7 +247,7 @@ export default class App extends React.Component<any, any>{
                 </div>
               </form>
             </div>}
-          {this.state.index == 2 && // FORM 2 BEGINS HERE
+          {this.state.index == 1 && // FORM 2 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
@@ -255,7 +256,7 @@ export default class App extends React.Component<any, any>{
 
                     <hr /> <br></br>
                     <span className="a-input__help">
-                      <label className="a-label">Tittel</label>
+                      <label className="a-label">Navn på prosjekt</label>
                     </span>
                     <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)} className="a-input" style={{ marginBottom: "30px" }} />
                     <div style={{ padding: "10px", border: "outset", borderColor: "#D9D9D6" }}>
@@ -270,7 +271,7 @@ export default class App extends React.Component<any, any>{
                 </div>
               </form>
             </div>}
-          {this.state.index == 3 && // FORM3 BEGINS HERE
+          {this.state.index == 6 && // FORM3 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
@@ -289,12 +290,12 @@ export default class App extends React.Component<any, any>{
                 </div>
               </form>
             </div>}
-          {this.state.index == 4 && // FORM5 BEGINS HERE
+          {this.state.index == 2 && // FORM5 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
                   <div className="m-form__group">
-                    <label className="a-label">Mål for møtet</label>
+                    <label className="a-label">Ditt mål for møtet</label>
                     <hr></hr>
                     <div className="wrapper-class">
                       <div className="m-form__group">
@@ -304,15 +305,15 @@ export default class App extends React.Component<any, any>{
                               <p>Hva vil du diskutere med oss?</p>
                             </span>
                             <div className="a-option">
-                              <span className="a-option__text">Kompetanse</span>
-                              {this.state.diskuter == "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
-                              {this.state.diskuter != "kompetanse" && <input type="radio" value="kompetanse" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
+                              <span className="a-option__text">Kompetanseprogram</span>
+                              {this.state.diskuter == "kompetanse" && <input type="radio" value="kompetanseprogram" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "kompetanse" && <input type="radio" value="kompetanseprogram" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
-                              <span className="a-option__text">Råd</span>
-                              {this.state.diskuter == "advice" && <input type="radio" value="advice" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
-                              {this.state.diskuter != "advice" && <input type="radio" value="advice" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
+                              <span className="a-option__text">Rådgivning</span>
+                              {this.state.diskuter == "advice" && <input type="radio" value="rådgivning" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
+                              {this.state.diskuter != "advice" && <input type="radio" value="rådgivning" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
@@ -328,13 +329,17 @@ export default class App extends React.Component<any, any>{
                               <span className="a-option__background"></span>
                             </div>
                             <div className="a-option">
-                              <span className="a-option__text">Annet</span>
-                              {this.state.annet && <input type="radio" onChange={this.setAnnetTrue.bind(this)} checked={true} name="rsvp" />}
-                              {!this.state.annet && <input type="radio" onChange={this.setAnnetTrue.bind(this)} name="rsvp" />}
+                              <span className="a-option__text">Annet</span> {/* TODO: omskrive logikken til annet slik at det blir et vanlig alternativ*/}
+                              {this.state.annet && <input type="radio" value="annet" onChange={this.setdiskuterutenomannet.bind(this)} checked={true} name="rsvp" />}
+                              {!this.state.annet && <input type="radio" value="annet" onChange={this.setdiskuterutenomannet.bind(this)} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
-                            {this.state.annet && <input type="text" onChange={this.setdiskuterannet.bind(this)} className="a-input" value={this.state.diskuterannet} placeholder={"beskriv"} style={{ marginTop: "20px", maxWidth: "297.6px" }} />}
                           </fieldset>
+                          <br></br>
+                          {this.state.diskuter != "" && <span className="a-input__help">
+                            <span className="a-option__text">Vil du utdype mer?</span>
+                          </span>}
+                          {this.state.diskuter != "" && <textarea className="a-textarea" rows={2} value={this.state.diskuterannet} onChange={this.setdiskuterannet.bind(this)}></textarea>}
                         </div>
                       </div>
                     </div>
@@ -342,10 +347,9 @@ export default class App extends React.Component<any, any>{
                 </div>
               </form>
             </div>}
-
           {/* Keep Form4 in seperate component file as we are required to use its componentDidMount() function to correctly display values */}
 
-          {this.state.index == 5 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser}
+          {this.state.index == 3 && <Form4 setAdviser={this.setAdviser} adviser={this.state.adviser}
             setTopicOne={this.setTopicOne} topicOne={this.state.topicOne}
             setTopicTwo={this.setTopicTwo} topicTwo={this.state.topicTwo}
             setTopicThree={this.setTopicThree} topicThree={this.state.topicThree}
@@ -355,7 +359,7 @@ export default class App extends React.Component<any, any>{
             setTopicSeven={this.setTopicSeven} topicSeven={this.state.topicSeven} />}
 
 
-          {this.state.index == 6 && // FORM6 BEGINS HERE
+          {this.state.index == 4 && // FORM6 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
@@ -391,12 +395,6 @@ export default class App extends React.Component<any, any>{
                               <span className="a-option__text">Innen 4 uker</span>
                               {this.state.when != "innen 4 uker" && <input type="radio" value="innen 4 uker" onChange={this.setwhen.bind(this)} name="rsvp" />}
                               {this.state.when == "innen 4 uker" && <input type="radio" value="innen 4 uker" onChange={this.setwhen.bind(this)} checked={true} name="rsvp" />}
-                              <span className="a-option__background"></span>
-                            </div>
-                            <div className="a-option">
-                              <span className="a-option__text">Innen 8 uker</span>
-                              {this.state.when != "innen 8 uker" && <input type="radio" value="innen 8 uker" onChange={this.setwhen.bind(this)} name="rsvp" />}
-                              {this.state.when == "innen 8 uker" && <input type="radio" value="innen 8 uker" onChange={this.setwhen.bind(this)} checked={true} name="rsvp" />}
                               <span className="a-option__background"></span>
                             </div>
                           </fieldset>
@@ -437,7 +435,7 @@ export default class App extends React.Component<any, any>{
                 </div>
               </form>
             </div>}
-          {this.state.index == 7 && // FORM 7 BEGINS HERE
+          {this.state.index == 7 && !this.state.sendinn && // FORM 7 BEGINS HERE
             <div className="container">
               <form role="form" className="o-form bgWhite">
                 <div className="o-form__inner">
@@ -478,20 +476,31 @@ export default class App extends React.Component<any, any>{
                     {<p>Du foretrekker {this.state.how}.</p>}
                   </span>
                   <div className="App container" style={{ padding: "0px 20% 0px 20%", textAlign: "center", margin: "auto" }}>
-                    <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ padding: "0px 20px 0px 20px" }}>Send inn</a>
+                    <a className="a-btn cta .m-text" onClick={() => { this.submitClicked() }} style={{ padding: "0px 20px 0px 20px" }}>Send inn</a>
                   </div>
                 </div>
               </form>
             </div>}
+          {this.state.sendinn && this.state.index == 7 && // SUBMITTED NOTIFICATION STARTS HERE
+            <div className="container">
+              <form role="form" className="o-form bgWhite">
+                <div className="o-form__inner" style={{ textAlign: "center", display: "block" }}>
+                  <p style={{ fontWeight: "bold" }} onClick={this.goBackFromSubmitted}>Takk for at du tar kontakt</p>
+                  <p>Du hører fra oss</p>
+                </div>
+              </form>
+            </div>}
           <div className="App container">
-            <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Forrige</a>
-            <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 35px 0px 35px" }}>Neste</a>
+            {this.state.index != 1 && !this.state.sendinn && <a className="a-btn cta .m-text" onClick={() => { this.previousClicked() }} style={{ float: "left", padding: "0px 20px 0px 20px" }}>Forrige</a>}
+            {this.state.index == 1 && <a className="a-btn cta .m-text" style={{ float: "left", padding: "0px 20px 0px 20px", backgroundColor: "#D9D9D6" }}>Forrige</a>}
+            {this.state.index != 7 && <a className="a-btn cta .m-text" onClick={() => { this.nextClicked() }} style={{ float: "right", padding: "0px 35px 0px 35px" }}>Neste</a>}
+            {this.state.index == 7 && !this.state.sendinn && <a className="a-btn cta .m-text" style={{ float: "right", padding: "0px 35px 0px 35px", backgroundColor: "#D9D9D6" }}>Neste</a>}
           </div>
-          <div className={"pagination"} style={{ display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%" }}>
+          {!this.state.sendinn && <div className={"pagination"} style={{ display: "inline-block", textAlign: "center", width: "98%", position: "absolute", right: "1.3%" }}>
             <div style={{ textAlign: "center", display: "inline-block" }}>
               <Pagination style={{ textAlign: "center", display: "inline-block", position: "sticky" }} getIndex={this.getIndex} setIndex={this.setIndex} />
             </div>
-          </div>
+          </div>}
         </div>
       </div>
     );
@@ -528,6 +537,17 @@ export default class App extends React.Component<any, any>{
 
   private setIndex(targetPage: number) {
     this.setState({ index: targetPage })
+  }
+
+  private submitClicked() {
+    this.setState({ sendinn: true })
+  }
+
+  private goBackFromSubmitted() {
+    this.setState({
+      sendinn: false,
+      index: 1
+    })
   }
 
   //Functions for Form1
@@ -851,7 +871,6 @@ export default class App extends React.Component<any, any>{
       diskuterenettverk: false,
       diskuterefinansiering: false,
       diskuterannet: event.target.value,
-      diskuter: event.target.value,
     })
   }
 
